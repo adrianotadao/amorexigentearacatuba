@@ -1,0 +1,25 @@
+#projects
+  %h1 Projetos
+  = link_to 'Adicionar novo projeto', new_admin_project_path, :class => "button_add"
+
+  -unless @projects.blank?
+    %table.list
+      %thead
+        %tr
+          %th Nome
+          %th Status
+          %th.actions
+      %tbody
+        - for project in @projects
+          %tr
+            %td= project.name
+            %td= project.status
+            %td.actions
+              = link_to 'Editar', [:edit, :admin, project], :class => "button_edit"
+
+  - else
+    .empty_list Não existem projetos cadastrados no momento.
+
+- content_for :javascript do
+  :javascript
+    new DataTables()

@@ -1,0 +1,19 @@
+= simple_form_for([:admin, @picture], :html => { :multipart => true }) do |f|
+  - if @picture.errors.any?
+    #error_explanation
+      .errors
+        = pluralize(@picture.errors.count, "erros")
+        foram encontrados:
+
+      %ul
+        - @picture.errors.full_messages.each do |msg|
+          %li= msg
+
+  .inputs
+    = f.input :data, :as => :file
+
+  .actions
+    = f.button :submit, :class => 'button save'
+    -unless @picture.new_record?
+      = link_to 'Destroy', [:admin, @picture], :confirm => 'Deseja realmente deletar?', :method => :delete, :class => "delete"
+    

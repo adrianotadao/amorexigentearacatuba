@@ -1,0 +1,7 @@
+#projects
+  %h1 Projetos
+  - for project in @projects
+    = link_to project_path(project) do
+      .project
+        .name=project.name
+        .description= truncate(project.body.html_safe, :length => 300)

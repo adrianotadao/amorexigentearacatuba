@@ -1,0 +1,14 @@
+#partner.show
+  %h1 Detalhes do parceiro #{@partner.name} 
+
+  %div.group
+    %p.active
+      %b Ativo:
+      = @partner.status
+    %p.name
+      %b Nome:
+      = @partner.name
+
+  .actions
+    = link_to 'Editar', [:edit, :admin, @partner], :class => 'button edit'
+    = link_to 'Voltar', [:admin, :brands], :class => 'button back'

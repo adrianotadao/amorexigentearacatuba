@@ -1,0 +1,49 @@
+!!! XML
+!!! 1.1
+%html{:xmls => "http://www.w3.org/1999/xhtml"}
+  %head
+    %link{ :href => 'http://fonts.googleapis.com/css?family=Quattrocento+Sans', :rel => 'stylesheet', :type => 'text/css'}
+    %link{ :href => 'http://fonts.googleapis.com/css?family=Comfortaa|Antic', :rel => 'stylesheet', :type => 'text/css'}
+    %link{ :href => 'http://fonts.googleapis.com/css?family=Rosario', :rel => 'stylesheet', :type => 'text/css' }    
+    = yield :stylesheet
+    = include_stylesheets :admin, :media => 'all'
+    = csrf_meta_tag
+
+    %title= page_title
+
+  %body
+    #root
+      #top
+        .top_content
+          .soon
+          .logo_area_restricted
+            .area_restricted Area Restrita
+            .login 
+              Logado: #{current_user.name}
+              =link_to "sair", destroy_user_session_path, :method => :delete
+          
+      #header
+        .menu
+          - if user_signed_in?
+            = link_to 'Quem somos', new_admin_institutional_path, :class => "#{'active' if controller.controller_name == 'institutionals'}"
+            = link_to 'Eventos', admin_events_path, :class => "#{'active' if controller.controller_name == 'events'}"
+            = link_to 'Albums', admin_albums_path, :class => "#{'active' if controller.controller_name == 'albums'}"
+            = link_to 'Projetos', admin_projects_path, :class => "#{'active' if controller.controller_name == 'projects'}"
+            = link_to 'Parceiros', admin_partners_path, :class => "#{'active' if controller.controller_name == 'partners'}"
+            = link_to 'Usuários', admin_users_path, :class => "#{'active' if controller.controller_name == 'users'}"
+
+      #content
+        = yield
+
+      #root_footer
+        .text_root_footer
+          Amor Exigente . Todos direitos reservados
+      #footer
+        .featured 
+          Adriano | Saulo
+        .text_footer
+          Desenvolvido por: 
+      
+  
+    = include_javascripts :admin
+    = yield :javascript

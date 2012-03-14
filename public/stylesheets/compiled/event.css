@@ -1,0 +1,35 @@
+/* line 2, ../../../app/assets/stylesheets/event.sass */
+#events a {
+  text-decoration: none;
+  color: white;
+}
+/* line 5, ../../../app/assets/stylesheets/event.sass */
+#events .event {
+  border: 1px solid #8b8b8b;
+  padding: 10px;
+  margin: 10px;
+}
+/* line 10, ../../../app/assets/stylesheets/event.sass */
+#events .event:hover {
+  border: 1px solid white;
+}
+/* line 13, ../../../app/assets/stylesheets/event.sass */
+#events .event .name {
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 15px;
+}
+
+/* line 20, ../../../app/assets/stylesheets/event.sass */
+#event .pictures {
+  margin-top: 50px;
+}
+/* line 23, ../../../app/assets/stylesheets/event.sass */
+#event .all_pictures {
+  text-align: center;
+}
+/* line 26, ../../../app/assets/stylesheets/event.sass */
+#event .all_pictures a img {
+  border: 1px solid white;
+}

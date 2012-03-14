@@ -1,0 +1,23 @@
+= simple_form_for([:admin, @user]) do |f|
+  - if @user.errors.any?
+    #error_explanation
+      .errors
+        = pluralize(@user.errors.count, "erros")
+        foram encontrados:
+
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+
+  .inputs
+    = f.input :name
+    = f.input :email, :required => true
+    = f.input :password
+    = f.input :password_confirmation
+
+  .actions
+    = f.button :submit, 'Salvar', :class => "button save"
+    - unless @user.new_record?
+
+      = link_to 'Deletar', [:admin, @user], :confirm => 'Deseja realmente deletar?', :method => :delete, :class => 'delete'
+

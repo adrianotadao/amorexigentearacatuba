@@ -1,0 +1,24 @@
+= simple_form_for([:admin, setup_institutional(@institutional)], :html => {:multipart => true}) do |f|
+  - if @institutional.errors.any?
+    #error_explanation
+      .errors
+        = pluralize(@institutional.errors.count, "erros")
+        foram encontrados:
+
+      %ul
+        - @institutional.errors.full_messages.each do |msg|
+          %li= msg
+
+  .inputs
+    = f.input :body, :as => :text, :input_html => { :class => "ckeditor" }
+    = f.input :principles, :as => :text, :input_html => { :class => "ckeditor" }
+    = f.input :contact, :as => :text, :input_html => { :class => "ckeditor" }
+    = f.simple_fields_for :logo do |logo|
+      = logo.input :data, :as => :file
+      = image_tag(logo.object.reload.data.url(:thumb) ) if logo.object.data?
+
+  .actions
+    = f.button :submit, 'Salvar', :class => "button save"
+    
+- content_for :javascript do
+  = javascript_include_tag 'ckeditor/ckeditor'

@@ -1,0 +1,124 @@
+/* line 4, ../../../../app/assets/stylesheets/admin/application.sass */
+body h1 {
+  margin: 10px;
+}
+/* line 7, ../../../../app/assets/stylesheets/admin/application.sass */
+body #root {
+  width: 100%;
+}
+/* line 10, ../../../../app/assets/stylesheets/admin/application.sass */
+body #root #top {
+  background: url(/images/background.jpg) repeat-x;
+}
+/* line 12, ../../../../app/assets/stylesheets/admin/application.sass */
+body #root #top .top_content {
+  width: 962px;
+  background: url(/images/background_top.jpg) repeat-x;
+  height: 230px;
+  margin: 0 auto;
+}
+/* line 18, ../../../../app/assets/stylesheets/admin/application.sass */
+body #root #top .top_content .soon {
+  background: url(/images/logo.png);
+  width: 168px;
+  height: 205px;
+  margin: 10px 0px 0px 40px;
+  position: absolute;
+  float: left;
+}
+/* line 26, ../../../../app/assets/stylesheets/admin/application.sass */
+body #root #top .top_content .logo_area_restricted {
+  background: url(/images/area_restrita.png);
+  float: right;
+  width: 350px;
+  height: 125px;
+  margin: 52px 92px 0px 0px;
+}
+/* line 33, ../../../../app/assets/stylesheets/admin/application.sass */
+body #root #top .top_content .logo_area_restricted .area_restricted {
+  margin: 36px 0px 0px 118px;
+  font-family: "Rosario", sans-serif;
+  font-size: 37px;
+}
+/* line 38, ../../../../app/assets/stylesheets/admin/application.sass */
+body #root #top .top_content .logo_area_restricted .login {
+  margin: 16px 0px 0px 118px;
+}
+/* line 42, ../../../../app/assets/stylesheets/admin/application.sass */
+body #root #header .menu {
+  height: 38px;
+  font-size: 19px;
+  padding-top: 12px;
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+  width: 1000px;
+  background: #207f95;
+  margin: 0 auto;
+  -moz-box-shadow: #666666 0px 2px 20px;
+  -webkit-box-shadow: #666666 0px 2px 20px;
+  -o-box-shadow: #666666 0px 2px 20px;
+  box-shadow: #666666 0px 2px 20px;
+}
+/* line 53, ../../../../app/assets/stylesheets/admin/application.sass */
+body #root #header .menu a, body #root #header .menu:visited {
+  color: white;
+  text-decoration: none;
+  padding: 10px 16px 16px 16px;
+}
+/* line 58, ../../../../app/assets/stylesheets/admin/application.sass */
+body #root #header .menu a:hover, body #root #header .menu a.active, body #root #header .menu:visited:hover, body #root #header .menu:visited.active {
+  font-color: white;
+  background-color: #6ca3b7;
+  padding: 10px 16px 17px 16px;
+}
+/* line 63, ../../../../app/assets/stylesheets/admin/application.sass */
+body #root #content {
+  width: 961px;
+  background: white;
+  margin: 0 auto;
+  clear: both;
+}
+/* line 69, ../../../../app/assets/stylesheets/admin/application.sass */
+body #root #root_footer {
+  background-color: #4f686d;
+  width: 1000px;
+  height: 70px;
+  margin: 0 auto;
+}
+/* line 75, ../../../../app/assets/stylesheets/admin/application.sass */
+body #root #root_footer .text_root_footer {
+  font-family: "Rosario", sans-serif;
+  font-size: 13px;
+  padding: 30px 0px 0px 20px;
+  color: white;
+}
+/* line 81, ../../../../app/assets/stylesheets/admin/application.sass */
+body #footer {
+  background-color: white;
+  width: 961px;
+  height: 5px;
+  margin: 0 auto;
+}
+/* line 87, ../../../../app/assets/stylesheets/admin/application.sass */
+body #footer .text_footer {
+  width: 106px;
+  font-family: "Rosario", sans-serif;
+  font-size: 13px;
+  padding: 15px 0px 10px 0px;
+  color: black;
+  float: right;
+  margin-right: 6px;
+}
+/* line 96, ../../../../app/assets/stylesheets/admin/application.sass */
+body #footer .featured {
+  float: right;
+  padding: 15px 0px 10px 0px;
+  font-family: "Rosario", sans-serif;
+  font-size: 15px;
+  font-weight: 1px;
+  text-decoration: underline;
+}
+/* line 105, ../../../../app/assets/stylesheets/admin/application.sass */
+body #footer table.list thead tr th.actions {
+  width: 65px;
+}

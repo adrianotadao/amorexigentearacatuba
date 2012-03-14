@@ -1,0 +1,51 @@
+!!! XML
+!!! 1.1
+%html{:xmls => "http://www.w3.org/1999/xhtml"}
+  %head
+    %link{:href => 'http://fonts.googleapis.com/css?family=Prata', :rel => 'stylesheet', :type => 'text/css'}
+    = yield :stylesheet
+    = include_stylesheets :site, :media => 'all'
+    = csrf_meta_tag
+  
+    %title= page_title
+
+  %body
+    #root
+      .top_bar
+      .top_content
+        .soon
+          .designer_right      
+
+      #menu         
+        =link_to '', root_path, :class => "home #{'active' if controller.controller_name == 'pages'}"
+        =link_to '', institutionals_path, :class => "institutional #{'active' if controller.controller_name == 'institutionals' && controller.action_name == 'index'}"
+        =link_to '', projects_path, :class => "projects #{'active' if controller.controller_name == 'projects'}"
+        =link_to '', events_path, :class => "events #{'active' if controller.controller_name == 'events'}"
+        =link_to '', principles_path, :class => "principles #{'active' if controller.controller_name == 'institutionals' && controller.action_name == 'principles'}"
+        =link_to '', contact_path, :class => "contacts #{'active' if controller.controller_name == 'contacts'}"
+      
+      #wrapper
+        #content= yield
+            
+        #advertising
+          .social_networks
+            =link_to '', "#", :class => "face" 
+            =link_to '', "#", :class => "twitter"          
+            =link_to '', "#", :class => "delicius"
+            =link_to '', "#", :class => "flick" 
+          
+          .partners
+            - for partner in Partner.actives.all
+              .partner
+                %p=partner.name  
+                =link_to image_tag(partner.logo.data(:thumb)), "#{partner.url.blank? ? 'http://amorexigentearacatuba.org.br' : 'http://' + partner.url}", :target => "_blank"
+    
+      #root_footer
+        %span.development
+          Desenvolvido por: 
+          = link_to "Adriano", "https://github.com/adrianotadao", :target => "_blank"
+          |
+          = link_to "Saulo", "https://github.com/SauloSilva", :target => "_blank"
+  
+  = include_javascripts :site
+  = yield :javascript

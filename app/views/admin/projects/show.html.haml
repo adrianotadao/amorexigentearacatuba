@@ -1,0 +1,14 @@
+#project.show
+  %h1 Detalhes do usuário #{@project.name} 
+
+  %div.group
+    %p.active
+      %b Ativo:
+      = @project.status
+    %p.name
+      %b Nome:
+      = @project.name
+
+  .actions
+    = link_to 'Editar', [:edit, :admin, @project], :class => 'button edit'
+    = link_to 'Voltar', [:admin, :brands], :class => 'button back'

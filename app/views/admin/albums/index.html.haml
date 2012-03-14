@@ -1,0 +1,25 @@
+#albums
+  %h1 Albuns
+  = link_to 'Adicionar novo album', new_admin_album_path, :class => "button_add"
+
+  -unless @albums.blank?
+    %table.list
+      %thead
+        %tr
+          %th Nome
+          %th Status
+          %th.actions
+      %tbody
+        - for album in @albums
+          %tr
+            %td= album.name
+            %td= album.status
+            %td.actions
+              = link_to 'Editar', [:edit, :admin, album], :class => "button_edit"
+
+  - else
+    .empty_list Não existem albums cadastrados no momento.
+
+- content_for :javascript do
+  :javascript
+    new DataTables()

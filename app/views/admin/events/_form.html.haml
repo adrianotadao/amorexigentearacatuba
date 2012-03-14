@@ -1,0 +1,39 @@
+= simple_form_for([:admin, @event], :html => {:multipart => true}) do |f|
+  - if @event.errors.any?
+    #error_explanation
+      .errors
+        = pluralize(@event.errors.count, "erros")
+        foram encontrados:
+
+      %ul
+        - @event.errors.full_messages.each do |msg|
+          %li= msg
+
+  .inputs
+    = f.input :active, :as => :boolean, :prompt => false
+    = f.input :name
+    = f.input :start_at, :as => :string, :input_html => { :class => "datepicker" }
+    = f.input :end_at, :as => :string, :input_html => { :class => "datepicker" }
+    = f.input :body, :as => :text, :input_html => {:class => "ckeditor"}
+    
+    .container
+      = link_to "add", "#", :class => "add"
+      = f.nested_fields_for :pictures do |f|
+        .item
+          = f.input :title
+          = f.input :data, :as => :file
+          = image_tag(f.object.reload.data.url(:thumb) ) if f.object.data?
+          = link_to "remove", "#", :class => "remove"
+          = f.hidden_field :id
+          = f.hidden_field :_destroy
+
+  .actions
+    = f.button :submit, 'Salvar', :class => "button save"
+    - unless @event.new_record?
+      = link_to 'Deletar', [:admin, @event], :confirm => 'Deseja realmente deletar?', :method => :delete, :class => 'button delete'
+
+-content_for :javascript do
+  = javascript_include_tag 'ckeditor/ckeditor'
+  :javascript
+    $('form').nestedFields()
+    $('.datepicker').datepicker()

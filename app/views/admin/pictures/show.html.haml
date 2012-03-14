@@ -1,0 +1,28 @@
+#picture.show
+  %h1 Detalhes da imagem #{@picture.data_file_name}
+
+  %div.group
+    %p
+      %b Nome do arquivo:
+      = @picture.data_file_name
+    %p
+      %b Tamanho:
+      = number_to_human_size @picture.data_file_size
+
+  %div.group
+    %p
+      %b Thumb:
+    = image_tag @picture.data.url(:thumb)
+
+  %div.group
+    %p
+      %b Criado em:
+      = l @picture.created_at
+    %p
+      %b Atualizado em:
+      = l @picture.updated_at
+
+  .actions
+    = link_to 'Editar', [:edit, :admin, @picture], :class => 'button edit'
+    = link_to 'Voltar', [:admin, :pictures], :class => 'button back'
+

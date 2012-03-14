@@ -1,0 +1,26 @@
+#partners
+  %h1 Parceiros
+
+  = link_to 'Adicionar novo parceiro', new_admin_partner_path, :class => "button_add"
+
+  -unless @partners.blank?
+    %table.list
+      %thead
+        %tr
+          %th Nome
+          %th Status
+          %th.actions
+      %tbody
+        - for partner in @partners
+          %tr
+            %td= partner.name
+            %td= partner.status
+            %td.actions
+              = link_to 'Editar', [:edit, :admin, partner], :class => "button_edit"
+
+  - else
+    .empty_list Não existem parceiros cadastrados no momento.
+
+- content_for :javascript do
+  :javascript
+    new DataTables()

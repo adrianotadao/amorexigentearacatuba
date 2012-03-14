@@ -1,0 +1,8 @@
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: amorexigente_production
+  pool: 5
+  username: amorexigente
+  password: Ufehafy17817

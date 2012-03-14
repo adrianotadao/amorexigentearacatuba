@@ -1,0 +1,51 @@
+/* line 4, ../../../app/assets/stylesheets/simple_form.sass */
+.simple_form #error_explanation {
+  border-bottom: 1px solid;
+  margin-bottom: 30px;
+}
+/* line 7, ../../../app/assets/stylesheets/simple_form.sass */
+.simple_form #error_explanation .errors {
+  line-height: 30px;
+}
+/* line 9, ../../../app/assets/stylesheets/simple_form.sass */
+.simple_form #error_explanation ul {
+  margin-bottom: 30px;
+}
+/* line 11, ../../../app/assets/stylesheets/simple_form.sass */
+.simple_form #error_explanation ul li {
+  padding: 5px 5px 5px 17px;
+}
+/* line 15, ../../../app/assets/stylesheets/simple_form.sass */
+.simple_form .inputs .input {
+  margin-top: 10px;
+}
+/* line 17, ../../../app/assets/stylesheets/simple_form.sass */
+.simple_form .inputs .input input, .simple_form .inputs .input textarea {
+  padding: 3px;
+  width: 81%;
+}
+/* line 20, ../../../app/assets/stylesheets/simple_form.sass */
+.simple_form .inputs .input label {
+  float: left;
+  width: 100px;
+  text-align: right;
+  margin-right: 10px;
+}
+/* line 26, ../../../app/assets/stylesheets/simple_form.sass */
+.simple_form .inputs .input label abbr {
+  color: #a64648;
+}
+/* line 29, ../../../app/assets/stylesheets/simple_form.sass */
+.simple_form .inputs .input.string input, .simple_form .inputs .input.string textarea, .simple_form .inputs .input.text input, .simple_form .inputs .input.text textarea {
+  border: 1px solid #cccccc;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 33, ../../../app/assets/stylesheets/simple_form.sass */
+.simple_form .actions {
+  text-align: right;
+}

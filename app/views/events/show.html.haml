@@ -1,0 +1,15 @@
+#event
+  %h1= @event.name
+
+  .description= @event.body.html_safe unless @event.body.blank?
+  
+  .pictures
+    %h1 Fotos
+
+  .all_pictures 
+    - for picture in @event.pictures
+      =link_to image_tag(picture.data.url(:medium)), picture.data.url(:big), :class => "fancybox", :rel => @event.id
+
+-content_for :javascript do
+  :javascript
+    $("a.fancybox").fancybox()

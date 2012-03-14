@@ -1,0 +1,106 @@
+@import "compass"
+
+body
+  h1
+    margin: 10px
+
+  #root
+    width: 100%
+
+    #top
+      background: url(/images/background.jpg) repeat-x 
+      .top_content
+        width: 962px
+        background: url(/images/background_top.jpg) repeat-x
+        height: 230px  
+        margin: 0 auto
+
+        .soon
+          background: url(/images/logo.png)
+          width: 168px
+          height: 205px
+          margin: 10px 0px 0px 40px 
+          position: absolute 
+          float: left
+      
+        .logo_area_restricted
+          background: url(/images/area_restrita.png)
+          float: right
+          width: 350px
+          height: 125px
+          margin: 52px 92px 0px 0px 
+          
+          .area_restricted
+            margin: 36px 0px 0px 118px  
+            font-family: 'Rosario', sans-serif
+            font-size: 37px       
+      
+          .login
+            margin: 16px 0px 0px 118px
+        
+    #header
+      .menu
+        height: 38px
+        font-size: 19px
+        padding-top: 12px
+        text-align: center
+        font-family: 'Comfortaa', cursive
+        width: 1000px
+        background: #207f95
+        margin: 0 auto
+        @include box-shadow(#666 0px 2px 20px)
+
+        a, &:visited
+          color: #fff
+          text-decoration: none
+          padding: 10px 16px 16px 16px
+
+          &:hover, &.active
+            font-color: #fff
+            background-color: #6ca3b7
+            padding: 10px 16px 17px 16px
+       
+    #content
+      width: 961px 
+      background: #fff
+      margin: 0 auto
+      clear: both
+    
+    #root_footer
+      background-color: #4f686d
+      width: 1000px
+      height: 70px
+      margin: 0 auto
+        
+      .text_root_footer 
+        font-family: 'Rosario', sans-serif
+        font-size: 13px 
+        padding: 30px 0px 0px 20px
+        color: #fff
+  
+  #footer
+    background-color: #fff
+    width: 961px
+    height: 5px
+    margin: 0 auto 
+    
+    .text_footer
+      width: 106px
+      font-family: 'Rosario', sans-serif
+      font-size: 13px 
+      padding: 15px 0px 10px 0px
+      color: #000
+      float: right
+      margin-right: 6px
+      
+    .featured
+      float: right
+      padding: 15px 0px 10px 0px
+      font-family: 'Rosario', sans-serif
+      font-size: 15px 
+      font-weight: 1px
+      text-decoration: underline
+        
+    table.list
+      thead tr th.actions
+        width: 65px

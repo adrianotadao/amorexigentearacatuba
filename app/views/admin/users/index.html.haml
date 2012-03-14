@@ -1,0 +1,23 @@
+#users
+  %h1 Usuários
+  = link_to 'Adicionar novo usuário', new_admin_user_path
+
+  -unless @users.blank?
+    %table.list
+      %thead
+        %tr
+          %th Nome
+          %th.actions
+      %tbody
+        - for user in @users
+          %tr
+            %td= user.name
+            %td.actions
+              = link_to 'Editar', [:edit, :admin, user], :class => "button_edit"
+
+  - else
+    .empty_list Não existem usuários cadastrados no momento.
+
+- content_for :javascript do
+  :javascript
+    new DataTables()

@@ -1,0 +1,49 @@
+pt-BR:
+  activerecord:
+    models:
+      attachment: Arquivo
+      event_category: Categoria de evento
+      event: Evento
+      institutional: Institucional
+      partner: Parceiro
+      project: Projeto
+      user: Usuário
+      contact: Contato
+    
+    attributes:
+      contact:
+        name: Nome
+        subject: Assunto
+        message: Mensagem
+        phone: Telefone
+      event_category:
+        name: Nome
+        active: Ativo
+      event:
+        title: Título
+        event_category: Categoria
+        active: Ativo
+        name: Nome
+        body: Descrição
+        start_at: Começa em
+        end_at: Termina em
+      institutional:
+        body: Institucional
+        principles: Princípios
+        contact: Contatos
+      user:
+        active: Ativo
+        name: Nome
+        password: Senha
+        password_confirmation: Confirmação
+      album:
+        active: Ativo
+        name: Nome
+      project:
+        active: Ativo
+        name: Nome
+        body: Descrição
+      partner:
+        active: Ativo
+        name: Nome
+        url: Site

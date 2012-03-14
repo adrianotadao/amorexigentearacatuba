@@ -1,0 +1,232 @@
+/* line 3, ../../../app/assets/stylesheets/application.sass */
+body {
+  background-color: #b4c1b0;
+  height: 100%;
+}
+/* line 7, ../../../app/assets/stylesheets/application.sass */
+body h1 {
+  margin-bottom: 10px;
+}
+/* line 10, ../../../app/assets/stylesheets/application.sass */
+body #root {
+  width: 100%;
+}
+/* line 13, ../../../app/assets/stylesheets/application.sass */
+body #root .top_bar {
+  background: url(/images/top_bar.png);
+  width: 964px;
+  height: 37px;
+  margin: 0 auto;
+}
+/* line 19, ../../../app/assets/stylesheets/application.sass */
+body #root .top_content {
+  width: 962px;
+  background-color: white;
+  height: 300px;
+  margin: 0 auto;
+}
+/* line 25, ../../../app/assets/stylesheets/application.sass */
+body #root .top_content .soon {
+  background: url(/images/logo.png);
+  width: 168px;
+  height: 205px;
+  margin: 10px 0px 0px 40px;
+  position: absolute;
+  float: left;
+}
+/* line 33, ../../../app/assets/stylesheets/application.sass */
+body #root .top_content .soon .designer_right {
+  background: url(/images/img.png);
+  float: right;
+  width: 718px;
+  height: 285px;
+  position: absolute;
+  margin: 5px 0px 0px 250px;
+}
+/* line 41, ../../../app/assets/stylesheets/application.sass */
+body #root #menu {
+  width: 1051px;
+  margin: 0 auto;
+  overflow: auto;
+  -moz-box-shadow: #666666 0px 2px 20px;
+  -webkit-box-shadow: #666666 0px 2px 20px;
+  -o-box-shadow: #666666 0px 2px 20px;
+  box-shadow: #666666 0px 2px 20px;
+}
+/* line 46, ../../../app/assets/stylesheets/application.sass */
+body #root #menu a {
+  height: 100px;
+  float: left;
+  background: url(/images/menu.png) no-repeat;
+  margin: 0 auto;
+}
+/* line 52, ../../../app/assets/stylesheets/application.sass */
+body #root #menu .home {
+  width: 110px;
+  background-position: 0px 0px;
+}
+/* line 56, ../../../app/assets/stylesheets/application.sass */
+body #root #menu .home:hover, body #root #menu .home.active {
+  background-position: 0px -126px;
+}
+/* line 59, ../../../app/assets/stylesheets/application.sass */
+body #root #menu .institutional {
+  width: 230px;
+  background-position: -110px 0px;
+}
+/* line 63, ../../../app/assets/stylesheets/application.sass */
+body #root #menu .institutional:hover, body #root #menu .institutional.active {
+  background-position: -110px -126px;
+}
+/* line 66, ../../../app/assets/stylesheets/application.sass */
+body #root #menu .projects {
+  width: 180px;
+  background-position: -330px 0px;
+}
+/* line 70, ../../../app/assets/stylesheets/application.sass */
+body #root #menu .projects:hover, body #root #menu .projects.active {
+  background-position: -330px -126px;
+}
+/* line 73, ../../../app/assets/stylesheets/application.sass */
+body #root #menu .events {
+  width: 169px;
+  background-position: -500px 0px;
+}
+/* line 77, ../../../app/assets/stylesheets/application.sass */
+body #root #menu .events:hover, body #root #menu .events.active {
+  background-position: -500px -126px;
+}
+/* line 80, ../../../app/assets/stylesheets/application.sass */
+body #root #menu .principles {
+  width: 200px;
+  background-position: -653px 0px;
+}
+/* line 84, ../../../app/assets/stylesheets/application.sass */
+body #root #menu .principles:hover, body #root #menu .principles.active {
+  background-position: -653px -126px;
+}
+/* line 87, ../../../app/assets/stylesheets/application.sass */
+body #root #menu .contacts {
+  width: 162px;
+  background-position: -840px 0px;
+}
+/* line 91, ../../../app/assets/stylesheets/application.sass */
+body #root #menu .contacts:hover, body #root #menu .contacts.active {
+  background-position: -840px -126px;
+}
+/* line 94, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper {
+  margin: 0 auto;
+  width: 957px;
+  overflow: auto;
+  background: #4f6149;
+}
+/* line 99, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #content {
+  overflow: auto;
+  width: 659px;
+  padding: 10px;
+  font-family: "Adamina", serif;
+  font-size: 16px;
+  color: white;
+  float: left;
+  background: #677c60;
+  min-height: 100%;
+}
+/* line 110, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #advertising {
+  background: #4f6149;
+  width: 278px;
+  float: right;
+}
+/* line 115, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #advertising .social_networks {
+  overflow: auto;
+}
+/* line 117, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #advertising .social_networks a {
+  background: url(/images/menu.png) repeat-y;
+  height: 65px;
+  float: left;
+  display: block;
+}
+/* line 123, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #advertising .social_networks .face {
+  width: 69px;
+  background-position: -1px -243px;
+}
+/* line 127, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #advertising .social_networks .face:hover {
+  background-position: -322px -241px;
+}
+/* line 130, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #advertising .social_networks .twitter {
+  width: 69px;
+  background-position: -78px -243px;
+}
+/* line 134, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #advertising .social_networks .twitter:hover {
+  background-position: -407px -241px;
+}
+/* line 137, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #advertising .social_networks .delicius {
+  width: 69px;
+  background-position: -153px -244px;
+}
+/* line 141, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #advertising .social_networks .delicius:hover {
+  background-position: -491px -241px;
+}
+/* line 144, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #advertising .social_networks .flick {
+  width: 69px;
+  background-position: -235px -244px;
+}
+/* line 148, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #advertising .social_networks .flick:hover {
+  background-position: -577px -239px;
+}
+/* line 151, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #advertising .partners {
+  margin-top: 10px;
+  width: 275px;
+  overflow: auto;
+}
+/* line 156, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #advertising .partners .partner {
+  width: 125px;
+  height: 108px;
+  float: left;
+  text-align: center;
+  margin: 4px;
+  border: 1px solid #4f6149;
+}
+/* line 164, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #advertising .partners .partner:hover {
+  border: 1px solid white;
+  cursor: pointer;
+}
+/* line 168, ../../../app/assets/stylesheets/application.sass */
+body #root #wrapper #advertising .partners .partner p {
+  color: white;
+  margin-bottom: 5px;
+}
+/* line 171, ../../../app/assets/stylesheets/application.sass */
+body #root_footer {
+  width: 1050px;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: right;
+  background: #596d52;
+  margin-bottom: 20px;
+}
+/* line 180, ../../../app/assets/stylesheets/application.sass */
+body #root_footer span.development {
+  margin-right: 10px;
+  color: white;
+}
+/* line 184, ../../../app/assets/stylesheets/application.sass */
+body #root_footer span.development a {
+  color: white;
+}

@@ -1,0 +1,43 @@
+!!! XML
+!!! 1.1
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    = yield :stylesheet
+    = include_stylesheets :admin, :media => 'all'
+    = csrf_meta_tag
+
+    %title= page_title
+
+  %body
+    #root
+      #pictures_browser
+        .actions
+          = link_to 'Nova imagem', new_admin_picture_path, :class => "button add", :target => '_blank'
+
+        %table.list
+          %thead
+            %tr
+              %th.grid
+              %th Nome
+              %th Tamanho
+              %th.styles Versões
+              %th.actions
+
+          %tbody
+            - @pictures.each do |picture|
+              %tr
+                %td.grid= image_tag picture.data.url(:grid)
+                %td= picture.data_file_name
+                %td= number_to_human_size picture.data_file_size
+                %td.styles
+                  = link_to_function '40x40', ckeditor_url(picture.data.url(:grid))
+                  = link_to_function '100x100', ckeditor_url(picture.data.url(:thumb))
+                  = link_to_function '400x400', ckeditor_url(picture.data.url(:medium))
+                  = link_to_function 'original', ckeditor_url(picture.data.url(:original))
+                %td.actions
+                  = link_to 'Detalhes', [:admin, picture], :class => "button show", :target => '_blank'
+                  = link_to 'Editar', edit_admin_picture_path(picture), :class => "button edit", :target => '_blank'
+
+    = include_javascripts :admin
+    = yield :javascript
+

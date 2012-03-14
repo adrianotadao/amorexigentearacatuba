@@ -1,0 +1,34 @@
+= simple_form_for [:admin, @album], :html => {:multipart => true} do |f|
+  - if @album.errors.any?
+    #error_explanation
+      .errors
+        = pluralize(@album.errors.count, "erros")
+        foram encontrados:
+
+      %ul
+        - @album.errors.full_messages.each do |msg|
+          %li= msg
+
+  .inputs
+    = f.input :active, :as => :boolean, :prompt => false
+    = f.input :name
+    
+    .container
+      = link_to "add", "#", :class => "add" 
+      = f.nested_fields_for :pictures do |f|
+        .item
+          = f.input :title
+          = f.input :data, :as => :file
+          = image_tag(f.object.reload.data.url(:thumb) ) if f.object.data?
+          = link_to "remove", "#", :class => "remove"
+          = f.hidden_field :id
+          = f.hidden_field :_destroy
+
+  .actions
+    = f.button :submit, 'Salvar', :class => "button save"
+    - unless @album.new_record?
+      = link_to 'Deletar', [:admin, @album], :confirm => 'Deseja realmente deletar?', :method => :delete, :class => 'delete'
+      
+-content_for :javascript do
+  :javascript
+    $('form').nestedFields()

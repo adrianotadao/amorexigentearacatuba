@@ -1,0 +1,34 @@
+javascripts:
+  admin:
+    - public/javascripts/jquery/jquery.min.js
+    - public/javascripts/jquery/jquery_ujs.js
+    - public/javascripts/jquery/jquery-ui.min.js
+    - public/javascripts/jquery/jquery.nested-fields.js
+    - public/javascripts/dataTables/jquery.dataTables.min.js
+    - public/javascripts/dataTables/jquery.dataTables.numericComma.js
+    - public/javascripts/dataTables/jquery.dataTables.numericHTMLComma.js
+    - public/javascripts/compiled/admin/data_tables.js
+        
+  site:
+    - public/javascripts/jquery/jquery.min.js
+    - public/javascripts/jquery/jquery_ujs.js
+    - public/javascripts/fancybox/jquery.fancybox-1.3.4.pack.js
+    - public/javascripts/fancybox/jquery.easing-1.3.pack.js
+    - public/javascripts/fancybox/jquery.mousewheel-3.0.4.pack.js
+
+stylesheets:
+  admin:
+    - public/stylesheets/compiled/global.css
+    - public/stylesheets/compiled/admin/application.css
+    - public/stylesheets/compiled/admin/simple_form.css    
+    - public/stylesheets/compiled/data_tables.css
+    - public/javascripts/jquery/css/ui-lightness/jquery-ui-1.8.16.custom.css
+
+  site:
+    - public/stylesheets/compiled/global.css
+    - public/stylesheets/compiled/application.css
+    - public/stylesheets/compiled/devise.css
+    - public/stylesheets/compiled/simple_form.css
+    - public/javascripts/fancybox/jquery.fancybox-1.3.4.css    
+    - public/stylesheets/compiled/event.css
+    - public/stylesheets/compiled/project.css

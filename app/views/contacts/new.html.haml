@@ -1,0 +1,23 @@
+#contact
+  %h1 Contato
+  
+  #form_contact
+    = simple_form_for(@contact) do |f|
+      - if @contact.errors.any?
+        #error_explanation
+          .errors
+            = pluralize(@contact.errors.count, "erros")
+            foram encontrados:
+
+          %ul
+            - @contact.errors.full_messages.each do |msg|
+              %li= msg
+
+      .inputs
+        = f.input :name
+        = f.input :phone
+        = f.input :email
+        = f.input :subject
+        = f.input :message, :as => :text
+      .actions
+        = f.button :submit, "Enviar"

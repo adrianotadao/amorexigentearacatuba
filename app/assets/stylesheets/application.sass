@@ -1,0 +1,185 @@
+@import "compass"
+
+body
+  background-color: #b4c1b0
+  height: 100%
+  
+  h1
+    margin-bottom: 10px
+  
+  #root
+    width: 100%
+
+    .top_bar
+      background: url(/images/top_bar.png)
+      width: 964px
+      height: 37px
+      margin: 0 auto
+    
+    .top_content
+      width: 962px
+      background-color: #fff
+      height: 300px  
+      margin: 0 auto
+
+      .soon
+        background: url(/images/logo.png)
+        width: 168px
+        height: 205px
+        margin: 10px 0px 0px 40px 
+        position: absolute 
+        float: left
+    
+        .designer_right
+          background: url(/images/img.png)
+          float: right
+          width: 718px
+          height: 285px
+          position: absolute
+          margin: 5px 0px 0px 250px
+     
+    #menu 
+      width: 1051px
+      margin: 0 auto
+      overflow: auto
+      @include box-shadow(#666 0px 2px 20px)
+      a 
+        height: 100px
+        float: left
+        background: url(/images/menu.png) no-repeat
+        margin: 0 auto
+
+      .home
+        width: 110px    
+        background-position: 0px 0px
+
+        &:hover, &.active
+          background-position: 0px -126px
+
+      .institutional
+        width: 230px    
+        background-position: -110px 0px
+
+        &:hover, &.active
+          background-position: -110px -126px
+
+      .projects
+        width: 180px    
+        background-position: -330px 0px
+
+        &:hover, &.active
+          background-position: -330px -126px
+          
+      .events
+        width: 169px    
+        background-position: -500px 0px
+
+        &:hover, &.active
+          background-position: -500px -126px
+
+      .principles
+        width: 200px    
+        background-position: -653px 0px
+
+        &:hover, &.active
+          background-position: -653px -126px
+
+      .contacts
+        width: 162px    
+        background-position: -840px 0px
+
+        &:hover, &.active
+          background-position: -840px -126px
+
+    #wrapper
+      margin: 0 auto  
+      width: 957px
+      overflow: auto
+      background: #4f6149
+      #content  
+        overflow: auto
+        width: 659px
+        padding: 10px
+        font-family: 'Adamina', serif
+        font-size: 16px
+        color: #fff   
+        float: left
+        background: #677c60
+        min-height: 100%
+  
+      #advertising
+        background: #4f6149
+        width: 278px
+        float: right
+
+        .social_networks
+          overflow: auto
+          a
+            background: url(/images/menu.png) repeat-y 
+            height: 65px
+            float: left
+            display: block
+
+          .face
+            width: 69px
+            background-position: -1px -243px 
+      
+            &:hover
+              background-position: -322px -241px
+
+          .twitter
+            width: 69px
+            background-position: -78px -243px 
+      
+            &:hover
+              background-position: -407px -241px 
+
+          .delicius
+            width: 69px
+            background-position: -153px -244px
+      
+            &:hover
+              background-position: -491px -241px 
+
+          .flick
+            width: 69px
+            background-position: -235px -244px
+      
+            &:hover
+              background-position: -577px -239px     
+              
+        .partners
+          margin-top: 10px
+          width: 275px
+          overflow: auto
+        
+          .partner
+            width: 125px
+            height: 108px
+            float: left
+            text-align: center
+            margin: 4px
+            border: 1px solid #4f6149
+          
+            &:hover
+              border: 1px solid #fff
+              cursor: pointer
+
+            p
+              color: #fff
+              margin-bottom: 5px
+  #root_footer          
+    width: 1050px
+    margin: 0 auto
+    padding-top: 20px
+    padding-bottom: 20px
+    text-align: right
+    background: #596D52
+    margin-bottom: 20px
+    
+    span.development
+      margin-right: 10px
+      color: #fff
+      
+      a
+        color: #fff

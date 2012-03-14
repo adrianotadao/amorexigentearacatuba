@@ -1,0 +1,1249 @@
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Volumes/data/voraz/amorexigente/config/environment.rb:5)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (112.4ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36mSQL (0.8ms)[0m  [1mSHOW KEYS FROM `schema_migrations`[0m
+  [1m[35mSQL (211.2ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAttachments (20110831000514)
+  [1m[35mSQL (65.7ms)[0m  CREATE TABLE `attachments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `attachable_id` int(11), `attachable_type` varchar(255), `type` varchar(255), `title` varchar(255), `data_file_name` varchar(255), `data_content_type` varchar(255), `data_file_size` varchar(255), `created_at` datetime, `updated_at` datetime) engine=MyISAM
+  [1m[36mSQL (0.9ms)[0m  [1mSHOW KEYS FROM `attachments`[0m
+  [1m[35mSQL (121.1ms)[0m  CREATE INDEX `index_attachments_on_type` ON `attachments` (`type`)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW KEYS FROM `attachments`[0m
+  [1m[35mSQL (77.2ms)[0m  CREATE INDEX `index_attachments_on_attachable_type_and_attachable_id` ON `attachments` (`attachable_type`, `attachable_id`)
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110831000514')[0m
+Migrating to DeviseCreateUsers (20110906034545)
+  [1m[35mSQL (64.6ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `cached_slug` varchar(255), `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(128) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int(11) DEFAULT 0, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (116.3ms)[0m  CREATE UNIQUE INDEX `index_users_on_email` ON `users` (`email`)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (88.7ms)[0m  CREATE UNIQUE INDEX `index_users_on_reset_password_token` ON `users` (`reset_password_token`)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (143.6ms)[0m  CREATE INDEX `index_users_on_cached_slug` ON `users` (`cached_slug`)
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110906034545')[0m
+Migrating to CreateInstitutionals (20110907142135)
+  [1m[35mSQL (119.5ms)[0m  CREATE TABLE `institutionals` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `body` text, `principles` text, `contact` text) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110907142135')[0m
+Migrating to CreateProjects (20110907143105)
+  [1m[35mSQL (114.7ms)[0m  CREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `active` tinyint(1), `name` varchar(255), `body` text, `cached_slug` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.8ms)[0m  [1mSHOW KEYS FROM `projects`[0m
+  [1m[35mSQL (115.5ms)[0m  CREATE INDEX `index_projects_on_cached_slug` ON `projects` (`cached_slug`)
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110907143105')[0m
+Migrating to CreatePartners (20110907143956)
+  [1m[35mSQL (88.3ms)[0m  CREATE TABLE `partners` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `active` tinyint(1), `name` varchar(255), `url` varchar(255), `cached_slug` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.8ms)[0m  [1mSHOW KEYS FROM `partners`[0m
+  [1m[35mSQL (126.3ms)[0m  CREATE INDEX `index_partners_on_cached_slug` ON `partners` (`cached_slug`)
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110907143956')[0m
+Migrating to CreateEvents (20110907145331)
+  [1m[35mSQL (109.1ms)[0m  CREATE TABLE `events` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `active` tinyint(1), `name` varchar(255), `body` text, `start_at` date, `end_at` date, `cached_slug` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.8ms)[0m  [1mSHOW KEYS FROM `events`[0m
+  [1m[35mSQL (140.3ms)[0m  CREATE INDEX `index_events_on_cached_slug` ON `events` (`cached_slug`)
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110907145331')[0m
+Migrating to CreateAlbums (20110907145851)
+  [1m[35mSQL (87.8ms)[0m  CREATE TABLE `albums` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `active` tinyint(1), `name` varchar(255), `description` varchar(255), `cached_slug` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mSHOW KEYS FROM `albums`[0m
+  [1m[35mSQL (127.1ms)[0m  CREATE INDEX `index_albums_on_cached_slug` ON `albums` (`cached_slug`)
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110907145851')[0m
+Migrating to CreateSlugs (20110911042925)
+  [1m[35mSQL (87.7ms)[0m  CREATE TABLE `slugs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `sluggable_id` int(11), `sequence` int(11) DEFAULT 1 NOT NULL, `sluggable_type` varchar(40), `scope` varchar(255), `created_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mSHOW KEYS FROM `slugs`[0m
+  [1m[35mSQL (115.5ms)[0m  CREATE INDEX `index_slugs_on_sluggable_id` ON `slugs` (`sluggable_id`)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `slugs`[0m
+  [1m[35mSQL (89.6ms)[0m  CREATE UNIQUE INDEX `index_slugs_on_n_s_s_and_s` ON `slugs` (`name`, `sluggable_type`, `sequence`, `scope`)
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110911042925')[0m
+Migrating to CreateContacts (20110914032051)
+  [1m[35mSQL (134.3ms)[0m  CREATE TABLE `contacts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `subject` varchar(255), `name` varchar(255), `phone` varchar(255), `email` varchar(255), `message` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110914032051')[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.3ms)[0m  [1mdescribe `albums`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `albums`
+  [1m[36mSQL (1.5ms)[0m  [1mdescribe `attachments`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `attachments`
+  [1m[36mSQL (2.0ms)[0m  [1mdescribe `contacts`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `contacts`
+  [1m[36mSQL (1.9ms)[0m  [1mdescribe `events`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `events`
+  [1m[36mSQL (1.5ms)[0m  [1mdescribe `institutionals`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `institutionals`
+  [1m[36mSQL (1.9ms)[0m  [1mdescribe `partners`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `partners`
+  [1m[36mSQL (2.2ms)[0m  [1mdescribe `projects`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `projects`
+  [1m[36mSQL (1.5ms)[0m  [1mdescribe `slugs`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `slugs`
+  [1m[36mSQL (1.8ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Volumes/data/voraz/amorexigente/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Volumes/data/voraz/amorexigente/config/environment.rb:5)
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (48.4ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW KEYS FROM `schema_migrations`[0m
+  [1m[35mSQL (170.1ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAttachments (20110831000514)
+  [1m[35mSQL (72.0ms)[0m  CREATE TABLE `attachments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `attachable_id` int(11), `attachable_type` varchar(255), `type` varchar(255), `title` varchar(255), `data_file_name` varchar(255), `data_content_type` varchar(255), `data_file_size` varchar(255), `created_at` datetime, `updated_at` datetime) engine=MyISAM
+  [1m[36mSQL (0.8ms)[0m  [1mSHOW KEYS FROM `attachments`[0m
+  [1m[35mSQL (100.5ms)[0m  CREATE INDEX `index_attachments_on_type` ON `attachments` (`type`)
+  [1m[36mSQL (0.7ms)[0m  [1mSHOW KEYS FROM `attachments`[0m
+  [1m[35mSQL (65.8ms)[0m  CREATE INDEX `index_attachments_on_attachable_type_and_attachable_id` ON `attachments` (`attachable_type`, `attachable_id`)
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110831000514')[0m
+Migrating to DeviseCreateUsers (20110906034545)
+  [1m[35mSQL (89.9ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `cached_slug` varchar(255), `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(128) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int(11) DEFAULT 0, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.8ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (115.7ms)[0m  CREATE UNIQUE INDEX `index_users_on_email` ON `users` (`email`)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (140.1ms)[0m  CREATE UNIQUE INDEX `index_users_on_reset_password_token` ON `users` (`reset_password_token`)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (126.5ms)[0m  CREATE INDEX `index_users_on_cached_slug` ON `users` (`cached_slug`)
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110906034545')[0m
+Migrating to CreateInstitutionals (20110907142135)
+  [1m[35mSQL (112.3ms)[0m  CREATE TABLE `institutionals` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `body` text, `principles` text, `contact` text) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110907142135')[0m
+Migrating to CreateProjects (20110907143105)
+  [1m[35mSQL (113.6ms)[0m  CREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `active` tinyint(1), `name` varchar(255), `body` text, `cached_slug` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.8ms)[0m  [1mSHOW KEYS FROM `projects`[0m
+  [1m[35mSQL (115.1ms)[0m  CREATE INDEX `index_projects_on_cached_slug` ON `projects` (`cached_slug`)
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110907143105')[0m
+Migrating to CreatePartners (20110907143956)
+  [1m[35mSQL (77.6ms)[0m  CREATE TABLE `partners` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `active` tinyint(1), `name` varchar(255), `url` varchar(255), `cached_slug` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW KEYS FROM `partners`[0m
+  [1m[35mSQL (125.9ms)[0m  CREATE INDEX `index_partners_on_cached_slug` ON `partners` (`cached_slug`)
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110907143956')[0m
+Migrating to CreateEvents (20110907145331)
+  [1m[35mSQL (89.3ms)[0m  CREATE TABLE `events` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `active` tinyint(1), `name` varchar(255), `body` text, `start_at` date, `end_at` date, `cached_slug` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW KEYS FROM `events`[0m
+  [1m[35mSQL (126.5ms)[0m  CREATE INDEX `index_events_on_cached_slug` ON `events` (`cached_slug`)
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110907145331')[0m
+Migrating to CreateAlbums (20110907145851)
+  [1m[35mSQL (111.0ms)[0m  CREATE TABLE `albums` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `active` tinyint(1), `name` varchar(255), `description` varchar(255), `cached_slug` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mSHOW KEYS FROM `albums`[0m
+  [1m[35mSQL (124.4ms)[0m  CREATE INDEX `index_albums_on_cached_slug` ON `albums` (`cached_slug`)
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110907145851')[0m
+Migrating to CreateSlugs (20110911042925)
+  [1m[35mSQL (187.9ms)[0m  CREATE TABLE `slugs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `sluggable_id` int(11), `sequence` int(11) DEFAULT 1 NOT NULL, `sluggable_type` varchar(40), `scope` varchar(255), `created_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW KEYS FROM `slugs`[0m
+  [1m[35mSQL (173.8ms)[0m  CREATE INDEX `index_slugs_on_sluggable_id` ON `slugs` (`sluggable_id`)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `slugs`[0m
+  [1m[35mSQL (204.3ms)[0m  CREATE UNIQUE INDEX `index_slugs_on_n_s_s_and_s` ON `slugs` (`name`, `sluggable_type`, `sequence`, `scope`)
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110911042925')[0m
+Migrating to CreateContacts (20110914032051)
+  [1m[35mSQL (163.4ms)[0m  CREATE TABLE `contacts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `subject` varchar(255), `name` varchar(255), `phone` varchar(255), `email` varchar(255), `message` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110914032051')[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.3ms)[0m  [1mdescribe `albums`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `albums`
+  [1m[36mSQL (1.5ms)[0m  [1mdescribe `attachments`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `attachments`
+  [1m[36mSQL (1.6ms)[0m  [1mdescribe `contacts`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `contacts`
+  [1m[36mSQL (1.6ms)[0m  [1mdescribe `events`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `events`
+  [1m[36mSQL (1.5ms)[0m  [1mdescribe `institutionals`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `institutionals`
+  [1m[36mSQL (2.2ms)[0m  [1mdescribe `partners`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `partners`
+  [1m[36mSQL (1.6ms)[0m  [1mdescribe `projects`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `projects`
+  [1m[36mSQL (1.7ms)[0m  [1mdescribe `slugs`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `slugs`
+  [1m[36mSQL (1.8ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Volumes/data/voraz/amorexigente/config/environment.rb:5)
+  [1m[36mSQL (0.9ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mSQL (20.3ms)[0m  [1mSELECT 1 FROM `users` WHERE (`users`.`email` = BINARY 'unip@unip.com.br') LIMIT 1[0m
+  [1m[35mSQL (2.0ms)[0m  describe `users`
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO `users` (`name`, `cached_slug`, `email`, `encrypted_password`, `reset_password_token`, `reset_password_sent_at`, `remember_created_at`, `sign_in_count`, `current_sign_in_at`, `last_sign_in_at`, `current_sign_in_ip`, `last_sign_in_ip`, `created_at`, `updated_at`) VALUES ('unip', NULL, 'unip@unip.com.br', '$2a$10$QtCC2E89hDtt6g1ixnFB6uRrRRPKhDnIX7/X8GSwqNM7beWAuC6be', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, '2012-02-11 12:01:25', '2012-02-11 12:01:25')[0m
+  [1m[35mSlug Load (0.4ms)[0m  SELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'User') ORDER BY id DESC
+  [1m[36mSlug Load (0.2ms)[0m  [1mSELECT `slugs`.* FROM `slugs` WHERE `slugs`.`name` = 'unip' AND `slugs`.`scope` IS NULL AND (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'User') ORDER BY id DESC[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM `slugs` WHERE `slugs`.`name` = 'unip' AND `slugs`.`scope` IS NULL AND `slugs`.`sluggable_type` = 'User'
+  [1m[36mSQL (1.7ms)[0m  [1mdescribe `slugs`[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `slugs` (`name`, `sluggable_id`, `sequence`, `sluggable_type`, `scope`, `created_at`) VALUES ('unip', 1, 1, 'User', NULL, '2012-02-11 12:01:25')
+  [1m[36mSlug Load (0.3ms)[0m  [1mSELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = 1 AND `slugs`.sluggable_type = 'User') ORDER BY id DESC LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `users` SET `cached_slug` = 'unip', `created_at` = '2012-02-11 12:01:25', `current_sign_in_at` = NULL, `current_sign_in_ip` = NULL, `email` = 'unip@unip.com.br', `encrypted_password` = '$2a$10$QtCC2E89hDtt6g1ixnFB6uRrRRPKhDnIX7/X8GSwqNM7beWAuC6be', `last_sign_in_at` = NULL, `last_sign_in_ip` = NULL, `name` = 'unip', `remember_created_at` = NULL, `reset_password_sent_at` = NULL, `reset_password_token` = NULL, `sign_in_count` = 0, `updated_at` = '2012-02-11 12:01:25' WHERE `users`.`id` = 1
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (1.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mSQL (7.8ms)[0m  [1mdescribe `events`[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `events` (`active`, `name`, `body`, `start_at`, `end_at`, `cached_slug`, `created_at`, `updated_at`) VALUES (1, 'Festa', NULL, NULL, NULL, NULL, '2012-02-11 12:01:30', '2012-02-11 12:01:30')
+  [1m[36mSQL (2.4ms)[0m  [1mdescribe `attachments`[0m
+  [1m[35mAREL (11.1ms)[0m  INSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (1, 'Event', 'EventPicture', 'Titulo', '01.jpg', 'image/jpeg', 93821, '2012-02-11 12:01:30', '2012-02-11 12:01:30')
+[paperclip] Saving attachments.
+[paperclip] saving public/system/event_picture/1/original_01.jpg
+[paperclip] saving public/system/event_picture/1/thumb_01.jpg
+[paperclip] saving public/system/event_picture/1/medium_01.jpg
+[paperclip] saving public/system/event_picture/1/big_01.jpg
+  [1m[36mAREL (0.9ms)[0m  [1mINSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (1, 'Event', 'EventPicture', 'Titulo', '02.jpg', 'image/jpeg', 478831, '2012-02-11 12:01:30', '2012-02-11 12:01:30')[0m
+[paperclip] Saving attachments.
+[paperclip] saving public/system/event_picture/2/original_02.jpg
+[paperclip] saving public/system/event_picture/2/thumb_02.jpg
+[paperclip] saving public/system/event_picture/2/medium_02.jpg
+[paperclip] saving public/system/event_picture/2/big_02.jpg
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (1, 'Event', 'EventPicture', 'Titulo', '03.jpg', 'image/jpeg', 896297, '2012-02-11 12:01:30', '2012-02-11 12:01:30')
+[paperclip] Saving attachments.
+[paperclip] saving public/system/event_picture/3/original_03.jpg
+[paperclip] saving public/system/event_picture/3/thumb_03.jpg
+[paperclip] saving public/system/event_picture/3/medium_03.jpg
+[paperclip] saving public/system/event_picture/3/big_03.jpg
+  [1m[36mAREL (0.7ms)[0m  [1mINSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (1, 'Event', 'EventPicture', 'Titulo', '04.jpg', 'image/jpeg', 912108, '2012-02-11 12:01:30', '2012-02-11 12:01:30')[0m
+[paperclip] Saving attachments.
+[paperclip] saving public/system/event_picture/4/original_04.jpg
+[paperclip] saving public/system/event_picture/4/thumb_04.jpg
+[paperclip] saving public/system/event_picture/4/medium_04.jpg
+[paperclip] saving public/system/event_picture/4/big_04.jpg
+  [1m[35mSlug Load (1.0ms)[0m  SELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Event') ORDER BY id DESC
+  [1m[36mSlug Load (3.4ms)[0m  [1mSELECT `slugs`.* FROM `slugs` WHERE `slugs`.`name` = 'festa' AND `slugs`.`scope` IS NULL AND (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Event') ORDER BY id DESC[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM `slugs` WHERE `slugs`.`name` = 'festa' AND `slugs`.`scope` IS NULL AND `slugs`.`sluggable_type` = 'Event'
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `slugs` (`name`, `sluggable_id`, `sequence`, `sluggable_type`, `scope`, `created_at`) VALUES ('festa', 1, 1, 'Event', NULL, '2012-02-11 12:01:30')[0m
+  [1m[35mSlug Load (0.3ms)[0m  SELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = 1 AND `slugs`.sluggable_type = 'Event') ORDER BY id DESC LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `events` SET `active` = 1, `body` = NULL, `cached_slug` = 'festa', `created_at` = '2012-02-11 12:01:30', `end_at` = NULL, `name` = 'Festa', `start_at` = NULL, `updated_at` = '2012-02-11 12:01:30' WHERE `events`.`id` = 1[0m
+  [1m[35mSQL (0.8ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `events` (`active`, `name`, `body`, `start_at`, `end_at`, `cached_slug`, `created_at`, `updated_at`) VALUES (1, 'Inauturacao', NULL, NULL, NULL, NULL, '2012-02-11 12:01:34', '2012-02-11 12:01:34')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (2, 'Event', 'EventPicture', 'Titulo', '01.jpg', 'image/jpeg', 93821, '2012-02-11 12:01:34', '2012-02-11 12:01:34')[0m
+[paperclip] Saving attachments.
+[paperclip] saving public/system/event_picture/5/original_01.jpg
+[paperclip] saving public/system/event_picture/5/thumb_01.jpg
+[paperclip] saving public/system/event_picture/5/medium_01.jpg
+[paperclip] saving public/system/event_picture/5/big_01.jpg
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (2, 'Event', 'EventPicture', 'Titulo', '02.jpg', 'image/jpeg', 478831, '2012-02-11 12:01:34', '2012-02-11 12:01:34')
+[paperclip] Saving attachments.
+[paperclip] saving public/system/event_picture/6/original_02.jpg
+[paperclip] saving public/system/event_picture/6/thumb_02.jpg
+[paperclip] saving public/system/event_picture/6/medium_02.jpg
+[paperclip] saving public/system/event_picture/6/big_02.jpg
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (2, 'Event', 'EventPicture', 'Titulo', '03.jpg', 'image/jpeg', 896297, '2012-02-11 12:01:34', '2012-02-11 12:01:34')[0m
+[paperclip] Saving attachments.
+[paperclip] saving public/system/event_picture/7/original_03.jpg
+[paperclip] saving public/system/event_picture/7/thumb_03.jpg
+[paperclip] saving public/system/event_picture/7/medium_03.jpg
+[paperclip] saving public/system/event_picture/7/big_03.jpg
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (2, 'Event', 'EventPicture', 'Titulo', '04.jpg', 'image/jpeg', 912108, '2012-02-11 12:01:34', '2012-02-11 12:01:34')
+[paperclip] Saving attachments.
+[paperclip] saving public/system/event_picture/8/original_04.jpg
+[paperclip] saving public/system/event_picture/8/thumb_04.jpg
+[paperclip] saving public/system/event_picture/8/medium_04.jpg
+[paperclip] saving public/system/event_picture/8/big_04.jpg
+  [1m[36mSlug Load (0.5ms)[0m  [1mSELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Event') ORDER BY id DESC[0m
+  [1m[35mSlug Load (0.6ms)[0m  SELECT `slugs`.* FROM `slugs` WHERE `slugs`.`name` = 'inauturacao' AND `slugs`.`scope` IS NULL AND (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Event') ORDER BY id DESC
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM `slugs` WHERE `slugs`.`name` = 'inauturacao' AND `slugs`.`scope` IS NULL AND `slugs`.`sluggable_type` = 'Event'[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `slugs` (`name`, `sluggable_id`, `sequence`, `sluggable_type`, `scope`, `created_at`) VALUES ('inauturacao', 2, 1, 'Event', NULL, '2012-02-11 12:01:34')
+  [1m[36mSlug Load (0.3ms)[0m  [1mSELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = 2 AND `slugs`.sluggable_type = 'Event') ORDER BY id DESC LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE `events` SET `active` = 1, `body` = NULL, `cached_slug` = 'inauturacao', `created_at` = '2012-02-11 12:01:34', `end_at` = NULL, `name` = 'Inauturacao', `start_at` = NULL, `updated_at` = '2012-02-11 12:01:34' WHERE `events`.`id` = 2
+  [1m[36mSQL (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT 1 FROM `partners` WHERE (`partners`.`name` = BINARY 'Parceiro1') LIMIT 1[0m
+  [1m[35mSQL (64.3ms)[0m  describe `partners`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `partners` (`active`, `name`, `url`, `cached_slug`, `created_at`, `updated_at`) VALUES (1, 'Parceiro1', 'www.unip.br', NULL, '2012-02-11 12:01:34', '2012-02-11 12:01:34')[0m
+  [1m[35mSlug Load (0.3ms)[0m  SELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Partner') ORDER BY id DESC
+  [1m[36mSlug Load (0.3ms)[0m  [1mSELECT `slugs`.* FROM `slugs` WHERE `slugs`.`name` = 'parceiro1' AND `slugs`.`scope` IS NULL AND (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Partner') ORDER BY id DESC[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM `slugs` WHERE `slugs`.`name` = 'parceiro1' AND `slugs`.`scope` IS NULL AND `slugs`.`sluggable_type` = 'Partner'
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `slugs` (`name`, `sluggable_id`, `sequence`, `sluggable_type`, `scope`, `created_at`) VALUES ('parceiro1', 1, 1, 'Partner', NULL, '2012-02-11 12:01:35')[0m
+  [1m[35mSQL (1.3ms)[0m  describe `attachments`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (1, 'Partner', 'PartnerPicture', 'Banner', '01.jpg', 'image/jpeg', 93821, '2012-02-11 12:01:35', '2012-02-11 12:01:35')[0m
+[paperclip] Saving attachments.
+[paperclip] saving public/system/partner_picture/9/original_01.jpg
+[paperclip] saving public/system/partner_picture/9/thumb_01.jpg
+[paperclip] saving public/system/partner_picture/9/medium_01.jpg
+  [1m[35mSlug Load (0.6ms)[0m  SELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = 1 AND `slugs`.sluggable_type = 'Partner') ORDER BY id DESC LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE `partners` SET `active` = 1, `cached_slug` = 'parceiro1', `created_at` = '2012-02-11 12:01:34', `name` = 'Parceiro1', `updated_at` = '2012-02-11 12:01:34', `url` = 'www.unip.br' WHERE `partners`.`id` = 1[0m
+  [1m[35mSQL (0.3ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT 1 FROM `partners` WHERE (`partners`.`name` = BINARY 'Parceiro2') LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `partners` (`active`, `name`, `url`, `cached_slug`, `created_at`, `updated_at`) VALUES (1, 'Parceiro2', 'www.unip.br', NULL, '2012-02-11 12:01:36', '2012-02-11 12:01:36')[0m
+  [1m[35mSlug Load (0.2ms)[0m  SELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Partner') ORDER BY id DESC
+  [1m[36mSlug Load (0.2ms)[0m  [1mSELECT `slugs`.* FROM `slugs` WHERE `slugs`.`name` = 'parceiro2' AND `slugs`.`scope` IS NULL AND (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Partner') ORDER BY id DESC[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM `slugs` WHERE `slugs`.`name` = 'parceiro2' AND `slugs`.`scope` IS NULL AND `slugs`.`sluggable_type` = 'Partner'
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `slugs` (`name`, `sluggable_id`, `sequence`, `sluggable_type`, `scope`, `created_at`) VALUES ('parceiro2', 2, 1, 'Partner', NULL, '2012-02-11 12:01:36')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (2, 'Partner', 'PartnerPicture', 'Banner', '02.jpg', 'image/jpeg', 478831, '2012-02-11 12:01:36', '2012-02-11 12:01:36')
+[paperclip] Saving attachments.
+[paperclip] saving public/system/partner_picture/10/original_02.jpg
+[paperclip] saving public/system/partner_picture/10/thumb_02.jpg
+[paperclip] saving public/system/partner_picture/10/medium_02.jpg
+  [1m[36mSlug Load (0.4ms)[0m  [1mSELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = 2 AND `slugs`.sluggable_type = 'Partner') ORDER BY id DESC LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `partners` SET `active` = 1, `cached_slug` = 'parceiro2', `created_at` = '2012-02-11 12:01:36', `name` = 'Parceiro2', `updated_at` = '2012-02-11 12:01:36', `url` = 'www.unip.br' WHERE `partners`.`id` = 2
+  [1m[36mSQL (21.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT 1 FROM `albums` WHERE (`albums`.`name` = BINARY 'Album oleo') LIMIT 1[0m
+  [1m[35mSQL (1.4ms)[0m  describe `albums`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `albums` (`active`, `name`, `description`, `cached_slug`, `created_at`, `updated_at`) VALUES (1, 'Album oleo', 'Inauguracao', NULL, '2012-02-11 12:01:38', '2012-02-11 12:01:38')[0m
+  [1m[35mSQL (1.5ms)[0m  describe `attachments`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (1, 'Album', 'AlbumPicture', 'Titulo', '01.jpg', 'image/jpeg', 93821, '2012-02-11 12:01:38', '2012-02-11 12:01:38')[0m
+[paperclip] Saving attachments.
+[paperclip] saving public/system/album_picture/11/original_01.jpg
+[paperclip] saving public/system/album_picture/11/thumb_01.jpg
+[paperclip] saving public/system/album_picture/11/medium_01.jpg
+[paperclip] saving public/system/album_picture/11/big_01.jpg
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (1, 'Album', 'AlbumPicture', 'Titulo', '02.jpg', 'image/jpeg', 478831, '2012-02-11 12:01:38', '2012-02-11 12:01:38')
+[paperclip] Saving attachments.
+[paperclip] saving public/system/album_picture/12/original_02.jpg
+[paperclip] saving public/system/album_picture/12/thumb_02.jpg
+[paperclip] saving public/system/album_picture/12/medium_02.jpg
+[paperclip] saving public/system/album_picture/12/big_02.jpg
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (1, 'Album', 'AlbumPicture', 'Titulo', '03.jpg', 'image/jpeg', 896297, '2012-02-11 12:01:38', '2012-02-11 12:01:38')[0m
+[paperclip] Saving attachments.
+[paperclip] saving public/system/album_picture/13/original_03.jpg
+[paperclip] saving public/system/album_picture/13/thumb_03.jpg
+[paperclip] saving public/system/album_picture/13/medium_03.jpg
+[paperclip] saving public/system/album_picture/13/big_03.jpg
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (1, 'Album', 'AlbumPicture', 'Titulo', '04.jpg', 'image/jpeg', 912108, '2012-02-11 12:01:38', '2012-02-11 12:01:38')
+[paperclip] Saving attachments.
+[paperclip] saving public/system/album_picture/14/original_04.jpg
+[paperclip] saving public/system/album_picture/14/thumb_04.jpg
+[paperclip] saving public/system/album_picture/14/medium_04.jpg
+[paperclip] saving public/system/album_picture/14/big_04.jpg
+  [1m[36mSlug Load (0.3ms)[0m  [1mSELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Album') ORDER BY id DESC[0m
+  [1m[35mSlug Load (0.3ms)[0m  SELECT `slugs`.* FROM `slugs` WHERE `slugs`.`name` = 'album-oleo' AND `slugs`.`scope` IS NULL AND (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Album') ORDER BY id DESC
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM `slugs` WHERE `slugs`.`name` = 'album-oleo' AND `slugs`.`scope` IS NULL AND `slugs`.`sluggable_type` = 'Album'[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `slugs` (`name`, `sluggable_id`, `sequence`, `sluggable_type`, `scope`, `created_at`) VALUES ('album-oleo', 1, 1, 'Album', NULL, '2012-02-11 12:01:38')
+  [1m[36mSlug Load (0.2ms)[0m  [1mSELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = 1 AND `slugs`.sluggable_type = 'Album') ORDER BY id DESC LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `albums` SET `active` = 1, `cached_slug` = 'album-oleo', `created_at` = '2012-02-11 12:01:38', `description` = 'Inauguracao', `name` = 'Album oleo', `updated_at` = '2012-02-11 12:01:38' WHERE `albums`.`id` = 1
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT 1 FROM `albums` WHERE (`albums`.`name` = BINARY 'Album oleo2') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `albums` (`active`, `name`, `description`, `cached_slug`, `created_at`, `updated_at`) VALUES (1, 'Album oleo2', 'Inauguracao2', NULL, '2012-02-11 12:01:40', '2012-02-11 12:01:40')
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (2, 'Album', 'AlbumPicture', 'Titulo', '01.jpg', 'image/jpeg', 93821, '2012-02-11 12:01:40', '2012-02-11 12:01:40')[0m
+[paperclip] Saving attachments.
+[paperclip] saving public/system/album_picture/15/original_01.jpg
+[paperclip] saving public/system/album_picture/15/thumb_01.jpg
+[paperclip] saving public/system/album_picture/15/medium_01.jpg
+[paperclip] saving public/system/album_picture/15/big_01.jpg
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (2, 'Album', 'AlbumPicture', 'Titulo', '02.jpg', 'image/jpeg', 478831, '2012-02-11 12:01:40', '2012-02-11 12:01:40')
+[paperclip] Saving attachments.
+[paperclip] saving public/system/album_picture/16/original_02.jpg
+[paperclip] saving public/system/album_picture/16/thumb_02.jpg
+[paperclip] saving public/system/album_picture/16/medium_02.jpg
+[paperclip] saving public/system/album_picture/16/big_02.jpg
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (2, 'Album', 'AlbumPicture', 'Titulo', '03.jpg', 'image/jpeg', 896297, '2012-02-11 12:01:40', '2012-02-11 12:01:40')[0m
+[paperclip] Saving attachments.
+[paperclip] saving public/system/album_picture/17/original_03.jpg
+[paperclip] saving public/system/album_picture/17/thumb_03.jpg
+[paperclip] saving public/system/album_picture/17/medium_03.jpg
+[paperclip] saving public/system/album_picture/17/big_03.jpg
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (2, 'Album', 'AlbumPicture', 'Titulo', '04.jpg', 'image/jpeg', 912108, '2012-02-11 12:01:40', '2012-02-11 12:01:40')
+[paperclip] Saving attachments.
+[paperclip] saving public/system/album_picture/18/original_04.jpg
+[paperclip] saving public/system/album_picture/18/thumb_04.jpg
+[paperclip] saving public/system/album_picture/18/medium_04.jpg
+[paperclip] saving public/system/album_picture/18/big_04.jpg
+  [1m[36mSlug Load (0.4ms)[0m  [1mSELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Album') ORDER BY id DESC[0m
+  [1m[35mSlug Load (0.3ms)[0m  SELECT `slugs`.* FROM `slugs` WHERE `slugs`.`name` = 'album-oleo2' AND `slugs`.`scope` IS NULL AND (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Album') ORDER BY id DESC
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM `slugs` WHERE `slugs`.`name` = 'album-oleo2' AND `slugs`.`scope` IS NULL AND `slugs`.`sluggable_type` = 'Album'[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `slugs` (`name`, `sluggable_id`, `sequence`, `sluggable_type`, `scope`, `created_at`) VALUES ('album-oleo2', 2, 1, 'Album', NULL, '2012-02-11 12:01:41')
+  [1m[36mSlug Load (0.3ms)[0m  [1mSELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = 2 AND `slugs`.sluggable_type = 'Album') ORDER BY id DESC LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE `albums` SET `active` = 1, `cached_slug` = 'album-oleo2', `created_at` = '2012-02-11 12:01:40', `description` = 'Inauguracao2', `name` = 'Album oleo2', `updated_at` = '2012-02-11 12:01:40' WHERE `albums`.`id` = 2
+  [1m[36mSQL (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (20.3ms)[0m  [1mdescribe `projects`[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `projects` (`active`, `name`, `body`, `cached_slug`, `created_at`, `updated_at`) VALUES (1, 'projeto1', 'aaaaaaaaaa', NULL, '2012-02-11 12:01:41', '2012-02-11 12:01:41')
+  [1m[36mSlug Load (0.2ms)[0m  [1mSELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Project') ORDER BY id DESC[0m
+  [1m[35mSlug Load (0.2ms)[0m  SELECT `slugs`.* FROM `slugs` WHERE `slugs`.`name` = 'projeto1' AND `slugs`.`scope` IS NULL AND (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Project') ORDER BY id DESC
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM `slugs` WHERE `slugs`.`name` = 'projeto1' AND `slugs`.`scope` IS NULL AND `slugs`.`sluggable_type` = 'Project'[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `slugs` (`name`, `sluggable_id`, `sequence`, `sluggable_type`, `scope`, `created_at`) VALUES ('projeto1', 1, 1, 'Project', NULL, '2012-02-11 12:01:41')
+  [1m[36mSlug Load (0.2ms)[0m  [1mSELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = 1 AND `slugs`.sluggable_type = 'Project') ORDER BY id DESC LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE `projects` SET `active` = 1, `body` = 'aaaaaaaaaa', `cached_slug` = 'projeto1', `created_at` = '2012-02-11 12:01:41', `name` = 'projeto1', `updated_at` = '2012-02-11 12:01:41' WHERE `projects`.`id` = 1
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `projects` (`active`, `name`, `body`, `cached_slug`, `created_at`, `updated_at`) VALUES (1, 'projeto2', 'aaaaaaaaaa', NULL, '2012-02-11 12:01:41', '2012-02-11 12:01:41')[0m
+  [1m[35mSlug Load (0.3ms)[0m  SELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Project') ORDER BY id DESC
+  [1m[36mSlug Load (0.2ms)[0m  [1mSELECT `slugs`.* FROM `slugs` WHERE `slugs`.`name` = 'projeto2' AND `slugs`.`scope` IS NULL AND (`slugs`.sluggable_id = NULL AND `slugs`.sluggable_type = 'Project') ORDER BY id DESC[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM `slugs` WHERE `slugs`.`name` = 'projeto2' AND `slugs`.`scope` IS NULL AND `slugs`.`sluggable_type` = 'Project'
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `slugs` (`name`, `sluggable_id`, `sequence`, `sluggable_type`, `scope`, `created_at`) VALUES ('projeto2', 2, 1, 'Project', NULL, '2012-02-11 12:01:41')[0m
+  [1m[35mSlug Load (0.2ms)[0m  SELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = 2 AND `slugs`.sluggable_type = 'Project') ORDER BY id DESC LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `projects` SET `active` = 1, `body` = 'aaaaaaaaaa', `cached_slug` = 'projeto2', `created_at` = '2012-02-11 12:01:41', `name` = 'projeto2', `updated_at` = '2012-02-11 12:01:41' WHERE `projects`.`id` = 2[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.0ms)[0m  describe `institutionals`
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `institutionals` (`body`, `principles`, `contact`) VALUES ('O Amor-Exigente e um programa de auto e mutua ajuda que desenvolve preceitos para a organizacao da familia, que sao praticados por meio dos 12 Principios Basicos e Eticos, da espiritualidade e dos grupos de auto e mutua-ajuda que atraves de seus voluntarios, sensibilizam as pessoas, levando-as a perceberem a necessidade de mudar o rumo de suas vidas e do mundo, a partir de si mesmas. Ha 26 anos, o Amor-Exigente (AE) atua como apoio e orientacao aos familiares de dependentes quimicos. O Programa eficaz estendeu-se tambem ao trabalho com Prevencao , passando a atuar como um movimento de protecao social Amor-Exigente, pois desestimular a experimentacao, o uso ou abuso de tabaco, do alcool e de outras drogas, assim como lutar contra tudo o que torna os jovens vulneraveis, expostos a violencia, ao crime, aos acidentes de transito e a corrupcao em todas as suas formas sao tambem propostas do Amor-Exigente. Atualmente, o movimento conta com 10 mil voluntarios, que realizam, aproximadamente, 100 mil atendimentos mensais por meio de reunioes, cursos e palestras. Sao 536 grupos no Brasil, 2 na Argentina, 1 no Peru e 9 no Uruguai, alem de 350 grupos em fase experimental e 249 Subgrupos de Jovens na Sobriedade.', 'O Amor-Exigente e um programa de auto e mutua ajuda que desenvolve preceitos para a organizacao da familia, que sao praticados por meio dos 12 Principios Basicos e Eticos, da espiritualidade e dos grupos de auto e mutua-ajuda que atraves de seus voluntarios, sensibilizam as pessoas, levando-as a perceberem a necessidade de mudar o rumo de suas vidas e do mundo, a partir de si mesmas. Ha 26 anos, o Amor-Exigente (AE) atua como apoio e orientacao aos familiares de dependentes quimicos. O Programa eficaz estendeu-se tambem ao trabalho com Prevencao , passando a atuar como um movimento de protecao social Amor-Exigente, pois desestimular a experimentacao, o uso ou abuso de tabaco, do alcool e de outras drogas, assim como lutar contra tudo o que torna os jovens vulneraveis, expostos a violencia, ao crime, aos acidentes de transito e a corrupcao em todas as suas formas sao tambem propostas do Amor-Exigente. Atualmente, o movimento conta com 10 mil voluntarios, que realizam, aproximadamente, 100 mil atendimentos mensais por meio de reunioes, cursos e palestras. Sao 536 grupos no Brasil, 2 na Argentina, 1 no Peru e 9 no Uruguai, alem de 350 grupos em fase experimental e 249 Subgrupos de Jovens na Sobriedade.', 'aaaaaaaa')[0m
+  [1m[35mSQL (1.8ms)[0m  describe `attachments`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `attachments` (`attachable_id`, `attachable_type`, `type`, `title`, `data_file_name`, `data_content_type`, `data_file_size`, `created_at`, `updated_at`) VALUES (1, 'Institutional', 'InstitutionalLogo', 'Banner', '01.jpg', 'image/jpeg', 93821, '2012-02-11 12:01:41', '2012-02-11 12:01:41')[0m
+[paperclip] Saving attachments.
+[paperclip] saving public/system/institutional_logo/19/original_01.jpg
+[paperclip] saving public/system/institutional_logo/19/thumb_01.jpg
+[paperclip] saving public/system/institutional_logo/19/medium_01.jpg
+[paperclip] saving public/system/institutional_logo/19/big_01.jpg
+  [1m[35mSQL (15.7ms)[0m  COMMIT
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Volumes/data/voraz/amorexigente/config/environment.rb:5)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-11 10:05:47 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Compiling admin/data_tables.coffee from framework 'default'
+[Barista] Copying all javascripts
+  Processing by PagesController#index as HTML
+  [1m[36mInstitutional Load (0.6ms)[0m  [1mSELECT `institutionals`.* FROM `institutionals` LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  SHOW TABLES
+  [1m[36mPartner Load (0.8ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mAlbumPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'AlbumPicture'
+  [1m[36mEventPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'EventPicture'[0m
+  [1m[35mPartner Load (0.6ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered pages/index.html.haml within layouts/application (1513.2ms)
+Completed 200 OK in 1644ms (Views: 1516.2ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/quem-somos" for 127.0.0.1 at 2012-02-11 10:05:56 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by InstitutionalsController#index as HTML
+  [1m[36mInstitutional Load (0.6ms)[0m  [1mSELECT `institutionals`.* FROM `institutionals` LIMIT 1[0m
+  [1m[35mPartner Load (0.6ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.6ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.4ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered institutionals/index.html.haml within layouts/application (19.3ms)
+Completed 200 OK in 27ms (Views: 22.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/projetos" for 127.0.0.1 at 2012-02-11 10:05:58 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`active` = 1
+  [1m[36mPartner Load (0.2ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mPartner Load (0.5ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.4ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered projects/index.html.haml within layouts/application (31.7ms)
+Completed 200 OK in 49ms (Views: 34.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/eventos" for 127.0.0.1 at 2012-02-11 10:06:02 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by EventsController#index as HTML
+  [1m[36mEvent Load (0.3ms)[0m  [1mSELECT `events`.* FROM `events` WHERE `events`.`active` = 1[0m
+  [1m[35mPartner Load (0.3ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered events/index.html.haml within layouts/application (59.8ms)
+Completed 200 OK in 78ms (Views: 63.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/principios" for 127.0.0.1 at 2012-02-11 10:06:04 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by InstitutionalsController#principles as HTML
+  [1m[35mInstitutional Load (0.5ms)[0m  SELECT `institutionals`.* FROM `institutionals` LIMIT 1
+  [1m[36mPartner Load (0.6ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.7ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.6ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered institutionals/principles.html.haml within layouts/application (18.3ms)
+Completed 200 OK in 24ms (Views: 20.3ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/projetos" for 127.0.0.1 at 2012-02-11 10:06:07 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`active` = 1
+  [1m[36mPartner Load (0.2ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mPartner Load (0.6ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.7ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered projects/index.html.haml within layouts/application (20.3ms)
+Completed 200 OK in 26ms (Views: 22.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/contato" for 127.0.0.1 at 2012-02-11 10:06:10 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ContactsController#new as HTML
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mPartner Load (0.6ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.6ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.6ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered contacts/new.html.haml within layouts/application (256.9ms)
+Completed 200 OK in 268ms (Views: 259.4ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/contatos" for 127.0.0.1 at 2012-02-11 10:06:15 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ContactsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3/iAJY4o2OvRx0oIaaKER7hy/RlMB+HSVludiuvpJq0=", "contact"=>{"name"=>"", "phone"=>"", "email"=>"", "subject"=>"", "message"=>""}, "commit"=>"Enviar"}
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered contacts/new.html.haml within layouts/application (45.4ms)
+Completed 200 OK in 90ms (Views: 48.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-11 10:06:30 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by PagesController#index as HTML
+  [1m[35mInstitutional Load (0.3ms)[0m  SELECT `institutionals`.* FROM `institutionals` LIMIT 1
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mAlbumPicture Load (0.5ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'AlbumPicture'
+  [1m[36mEventPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'EventPicture'[0m
+  [1m[35mPartner Load (0.6ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.5ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.7ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered pages/index.html.haml within layouts/application (51.7ms)
+Completed 200 OK in 60ms (Views: 53.5ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/quem-somos" for 127.0.0.1 at 2012-02-11 10:06:33 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by InstitutionalsController#index as HTML
+  [1m[36mInstitutional Load (0.3ms)[0m  [1mSELECT `institutionals`.* FROM `institutionals` LIMIT 1[0m
+  [1m[35mPartner Load (0.3ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.6ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.6ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.6ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered institutionals/index.html.haml within layouts/application (17.9ms)
+Completed 200 OK in 24ms (Views: 19.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/projetos" for 127.0.0.1 at 2012-02-11 10:06:35 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`active` = 1
+  [1m[36mPartner Load (0.2ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mPartner Load (0.6ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered projects/index.html.haml within layouts/application (19.6ms)
+Completed 200 OK in 25ms (Views: 21.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/quem-somos" for 127.0.0.1 at 2012-02-11 10:06:38 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by InstitutionalsController#index as HTML
+  [1m[36mInstitutional Load (0.3ms)[0m  [1mSELECT `institutionals`.* FROM `institutionals` LIMIT 1[0m
+  [1m[35mPartner Load (0.3ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.7ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.5ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered institutionals/index.html.haml within layouts/application (18.0ms)
+Completed 200 OK in 24ms (Views: 20.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/projetos" for 127.0.0.1 at 2012-02-11 10:06:39 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`active` = 1
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mPartner Load (0.7ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.6ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered projects/index.html.haml within layouts/application (58.8ms)
+Completed 200 OK in 66ms (Views: 61.5ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/projetos/projeto1" for 127.0.0.1 at 2012-02-11 10:06:42 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"projeto1"}
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`cached_slug` = 'projeto1' LIMIT 1[0m
+  [1m[35mPartner Load (0.5ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.4ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered projects/show.html.haml within layouts/application (22.0ms)
+Completed 200 OK in 29ms (Views: 24.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/projetos" for 127.0.0.1 at 2012-02-11 10:06:45 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.7ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`active` = 1[0m
+  [1m[35mPartner Load (0.5ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.5ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.5ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered projects/index.html.haml within layouts/application (19.5ms)
+Completed 200 OK in 26ms (Views: 21.9ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/eventos" for 127.0.0.1 at 2012-02-11 10:06:46 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by EventsController#index as HTML
+  [1m[35mEvent Load (0.3ms)[0m  SELECT `events`.* FROM `events` WHERE `events`.`active` = 1
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mPartner Load (0.3ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered events/index.html.haml within layouts/application (19.5ms)
+Completed 200 OK in 26ms (Views: 22.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/eventos/festa" for 127.0.0.1 at 2012-02-11 10:06:48 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by EventsController#show as HTML
+  Parameters: {"id"=>"festa"}
+  [1m[36mEvent Load (0.3ms)[0m  [1mSELECT `events`.* FROM `events` WHERE `events`.`cached_slug` = 'festa' LIMIT 1[0m
+  [1m[35mEventPicture Load (0.8ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'EventPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Event')
+  [1m[36mPartner Load (0.5ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.4ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered events/show.html.haml within layouts/application (68.3ms)
+Completed 200 OK in 74ms (Views: 69.8ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/principios" for 127.0.0.1 at 2012-02-11 10:07:11 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by InstitutionalsController#principles as HTML
+  [1m[35mInstitutional Load (0.3ms)[0m  SELECT `institutionals`.* FROM `institutionals` LIMIT 1
+  [1m[36mPartner Load (0.4ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.4ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered institutionals/principles.html.haml within layouts/application (22.5ms)
+Completed 200 OK in 28ms (Views: 25.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/contato" for 127.0.0.1 at 2012-02-11 10:07:13 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ContactsController#new as HTML
+  [1m[35mPartner Load (0.8ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.7ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.6ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.5ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered contacts/new.html.haml within layouts/application (36.4ms)
+Completed 200 OK in 45ms (Views: 41.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-11 10:12:20 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by PagesController#index as HTML
+  [1m[35mInstitutional Load (0.3ms)[0m  SELECT `institutionals`.* FROM `institutionals` LIMIT 1
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mAlbumPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'AlbumPicture'
+  [1m[36mEventPicture Load (0.2ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'EventPicture'[0m
+  [1m[35mPartner Load (0.5ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.5ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.7ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered pages/index.html.haml within layouts/application (17.9ms)
+Completed 200 OK in 26ms (Views: 19.8ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/projetos" for 127.0.0.1 at 2012-02-11 10:12:34 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.7ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`active` = 1[0m
+  [1m[35mPartner Load (0.3ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.4ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered projects/index.html.haml within layouts/application (19.3ms)
+Completed 200 OK in 26ms (Views: 22.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/eventos" for 127.0.0.1 at 2012-02-11 10:12:52 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by EventsController#index as HTML
+  [1m[35mEvent Load (0.3ms)[0m  SELECT `events`.* FROM `events` WHERE `events`.`active` = 1
+  [1m[36mPartner Load (0.2ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mPartner Load (0.6ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.6ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered events/index.html.haml within layouts/application (20.0ms)
+Completed 200 OK in 26ms (Views: 22.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/principios" for 127.0.0.1 at 2012-02-11 10:13:20 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by InstitutionalsController#principles as HTML
+  [1m[36mInstitutional Load (0.3ms)[0m  [1mSELECT `institutionals`.* FROM `institutionals` LIMIT 1[0m
+  [1m[35mPartner Load (0.7ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.6ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.6ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered institutionals/principles.html.haml within layouts/application (18.9ms)
+Completed 200 OK in 24ms (Views: 20.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/contato" for 127.0.0.1 at 2012-02-11 10:13:22 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ContactsController#new as HTML
+  [1m[36mPartner Load (0.4ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mPartner Load (0.7ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.4ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered contacts/new.html.haml within layouts/application (72.5ms)
+Completed 200 OK in 78ms (Views: 74.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/projetos" for 127.0.0.1 at 2012-02-11 10:13:44 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`active` = 1[0m
+  [1m[35mPartner Load (0.2ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered projects/index.html.haml within layouts/application (19.3ms)
+Completed 200 OK in 26ms (Views: 21.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/quem-somos" for 127.0.0.1 at 2012-02-11 10:13:45 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by InstitutionalsController#index as HTML
+  [1m[35mInstitutional Load (0.3ms)[0m  SELECT `institutionals`.* FROM `institutionals` LIMIT 1
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mPartner Load (0.3ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered institutionals/index.html.haml within layouts/application (53.0ms)
+Completed 200 OK in 60ms (Views: 56.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/projetos" for 127.0.0.1 at 2012-02-11 10:13:47 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`active` = 1[0m
+  [1m[35mPartner Load (0.3ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.6ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.4ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered projects/index.html.haml within layouts/application (19.5ms)
+Completed 200 OK in 26ms (Views: 22.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-11 10:13:48 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by PagesController#index as HTML
+  [1m[35mInstitutional Load (0.3ms)[0m  SELECT `institutionals`.* FROM `institutionals` LIMIT 1
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mAlbumPicture Load (0.2ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'AlbumPicture'
+  [1m[36mEventPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'EventPicture'[0m
+  [1m[35mPartner Load (0.4ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered pages/index.html.haml within layouts/application (18.2ms)
+Completed 200 OK in 26ms (Views: 20.8ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2012-02-11 10:14:00 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::AdminsController#index as HTML
+Completed   in 1ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-02-11 10:14:00 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Devise::SessionsController#new as HTML
+  [1m[36mPartner Load (0.6ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.5ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered devise/sessions/new.html.haml within layouts/application (29.9ms)
+Completed 200 OK in 83ms (Views: 32.4ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2012-02-11 10:14:24 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3/iAJY4o2OvRx0oIaaKER7hy/RlMB+HSVludiuvpJq0=", "user"=>{"email"=>"unip@unip.com.br", "password"=>"[FILTERED]"}, "commit"=>"Entrar"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`email` = 'unip@unip.com.br' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSlug Load (0.7ms)[0m  SELECT `slugs`.* FROM `slugs` WHERE (`slugs`.sluggable_id = 1 AND `slugs`.sluggable_type = 'User') ORDER BY id DESC LIMIT 1
+  [1m[36mAREL (0.7ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2012-02-11 12:14:24', `current_sign_in_at` = '2012-02-11 12:14:24', `last_sign_in_ip` = '127.0.0.1', `current_sign_in_ip` = '127.0.0.1', `sign_in_count` = 1, `updated_at` = '2012-02-11 12:14:24' WHERE `users`.`id` = 1[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 239ms
+
+
+Started GET "/admin" for 127.0.0.1 at 2012-02-11 10:14:24 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::AdminsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered admin/admins/index.html.haml within /layouts/admin (11.9ms)
+Completed 200 OK in 18ms (Views: 16.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/admin/eventos" for 127.0.0.1 at 2012-02-11 10:14:27 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::EventsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mEvent Load (0.3ms)[0m  [1mSELECT `events`.* FROM `events` ORDER BY name[0m
+Rendered admin/events/index.html.haml within /layouts/admin (16.6ms)
+Completed 200 OK in 23ms (Views: 20.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/admin/quem-somos/new" for 127.0.0.1 at 2012-02-11 10:14:28 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::InstitutionalsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mInstitutional Load (0.2ms)[0m  [1mSELECT `institutionals`.* FROM `institutionals` LIMIT 1[0m
+  [1m[35mInstitutionalLogo Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'InstitutionalLogo' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Institutional') LIMIT 1
+  [1m[36mInstitutionalLogo Load (0.6ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'InstitutionalLogo' AND `attachments`.`id` = 19 LIMIT 1[0m
+Rendered admin/institutionals/_form.html.haml (73.2ms)
+Rendered admin/institutionals/new.html.haml within /layouts/admin (86.9ms)
+Completed 200 OK in 94ms (Views: 90.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/admin/eventos" for 127.0.0.1 at 2012-02-11 10:14:33 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::EventsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mEvent Load (0.5ms)[0m  [1mSELECT `events`.* FROM `events` ORDER BY name[0m
+Rendered admin/events/index.html.haml within /layouts/admin (16.6ms)
+Completed 200 OK in 25ms (Views: 21.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/admin/albums" for 127.0.0.1 at 2012-02-11 10:14:34 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::AlbumsController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mAlbum Load (0.8ms)[0m  [1mSELECT `albums`.* FROM `albums` ORDER BY name[0m
+Rendered admin/albums/index.html.haml within /layouts/admin (24.8ms)
+Completed 200 OK in 43ms (Views: 29.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/admin/albums/album-oleo/edit" for 127.0.0.1 at 2012-02-11 10:14:39 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::AlbumsController#edit as HTML
+  Parameters: {"id"=>"album-oleo"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mAlbum Load (0.3ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE `albums`.`cached_slug` = 'album-oleo' LIMIT 1[0m
+  [1m[35mAlbumPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'AlbumPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Album')
+  [1m[36mAlbumPicture Load (0.4ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'AlbumPicture' AND `attachments`.`id` = 11 LIMIT 1[0m
+  [1m[35mAlbumPicture Load (0.5ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'AlbumPicture' AND `attachments`.`id` = 12 LIMIT 1
+  [1m[36mAlbumPicture Load (0.7ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'AlbumPicture' AND `attachments`.`id` = 13 LIMIT 1[0m
+  [1m[35mAlbumPicture Load (0.7ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'AlbumPicture' AND `attachments`.`id` = 14 LIMIT 1
+Rendered admin/albums/_form.html.haml (194.6ms)
+Rendered admin/albums/edit.html.haml within /layouts/admin (210.0ms)
+Completed 200 OK in 224ms (Views: 214.5ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/admin/projetos" for 127.0.0.1 at 2012-02-11 10:15:01 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::ProjectsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.6ms)[0m  SELECT `projects`.* FROM `projects` ORDER BY name
+Rendered admin/projects/index.html.haml within /layouts/admin (15.8ms)
+Completed 200 OK in 24ms (Views: 20.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/admin/projetos/new" for 127.0.0.1 at 2012-02-11 10:15:02 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::ProjectsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered admin/projects/_form.html.haml (49.5ms)
+Rendered admin/projects/new.html.haml within /layouts/admin (63.1ms)
+Completed 200 OK in 70ms (Views: 67.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admin/parceiros" for 127.0.0.1 at 2012-02-11 10:15:07 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::PartnersController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` ORDER BY name[0m
+Rendered admin/partners/index.html.haml within /layouts/admin (16.1ms)
+Completed 200 OK in 24ms (Views: 20.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/admin/parceiros/new" for 127.0.0.1 at 2012-02-11 10:15:09 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::PartnersController#new as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered admin/partners/_form.html.haml (62.7ms)
+Rendered admin/partners/new.html.haml within /layouts/admin (76.6ms)
+Completed 200 OK in 84ms (Views: 81.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/admin/usuarios" for 127.0.0.1 at 2012-02-11 10:15:10 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` ORDER BY name
+Rendered admin/users/index.html.haml within /layouts/admin (15.4ms)
+Completed 200 OK in 23ms (Views: 20.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/admin/projetos" for 127.0.0.1 at 2012-02-11 10:15:11 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::ProjectsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` ORDER BY name
+Rendered admin/projects/index.html.haml within /layouts/admin (17.0ms)
+Completed 200 OK in 24ms (Views: 21.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/admin/albums" for 127.0.0.1 at 2012-02-11 10:15:16 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::AlbumsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mAlbum Load (0.4ms)[0m  SELECT `albums`.* FROM `albums` ORDER BY name
+Rendered admin/albums/index.html.haml within /layouts/admin (22.1ms)
+Completed 200 OK in 30ms (Views: 26.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/admin/albums/new" for 127.0.0.1 at 2012-02-11 10:15:19 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::AlbumsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered admin/albums/_form.html.haml (59.7ms)
+Rendered admin/albums/new.html.haml within /layouts/admin (73.2ms)
+Completed 200 OK in 80ms (Views: 77.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admin/eventos" for 127.0.0.1 at 2012-02-11 10:15:23 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by Admin::EventsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mEvent Load (0.3ms)[0m  [1mSELECT `events`.* FROM `events` ORDER BY name[0m
+Rendered admin/events/index.html.haml within /layouts/admin (16.4ms)
+Completed 200 OK in 23ms (Views: 20.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-11 10:15:29 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by PagesController#index as HTML
+  [1m[35mInstitutional Load (0.4ms)[0m  SELECT `institutionals`.* FROM `institutionals` LIMIT 1
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mAlbumPicture Load (0.2ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'AlbumPicture'
+  [1m[36mEventPicture Load (0.2ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'EventPicture'[0m
+  [1m[35mPartner Load (0.7ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered pages/index.html.haml within layouts/application (17.7ms)
+Completed 200 OK in 25ms (Views: 19.9ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/quem-somos" for 127.0.0.1 at 2012-02-11 10:15:31 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by InstitutionalsController#index as HTML
+  [1m[36mInstitutional Load (0.3ms)[0m  [1mSELECT `institutionals`.* FROM `institutionals` LIMIT 1[0m
+  [1m[35mPartner Load (0.3ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.4ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered institutionals/index.html.haml within layouts/application (17.6ms)
+Completed 200 OK in 24ms (Views: 20.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/projetos" for 127.0.0.1 at 2012-02-11 10:15:36 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`active` = 1
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mPartner Load (0.6ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.6ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered projects/index.html.haml within layouts/application (61.5ms)
+Completed 200 OK in 68ms (Views: 63.6ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/projetos/projeto1" for 127.0.0.1 at 2012-02-11 10:15:49 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"projeto1"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`cached_slug` = 'projeto1' LIMIT 1[0m
+  [1m[35mPartner Load (0.7ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.7ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.6ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered projects/show.html.haml within layouts/application (24.7ms)
+Completed 200 OK in 30ms (Views: 26.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-11 10:16:30 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by PagesController#index as HTML
+  [1m[36mInstitutional Load (0.3ms)[0m  [1mSELECT `institutionals`.* FROM `institutionals` LIMIT 1[0m
+  [1m[35mPartner Load (0.4ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mAlbumPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'AlbumPicture'[0m
+  [1m[35mEventPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'EventPicture'
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered pages/index.html.haml within layouts/application (23.5ms)
+Completed 200 OK in 35ms (Views: 28.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/quem-somos" for 127.0.0.1 at 2012-02-11 10:16:32 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by InstitutionalsController#index as HTML
+  [1m[35mInstitutional Load (0.3ms)[0m  SELECT `institutionals`.* FROM `institutionals` LIMIT 1
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mPartner Load (0.5ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.6ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered institutionals/index.html.haml within layouts/application (18.2ms)
+Completed 200 OK in 24ms (Views: 20.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/projetos" for 127.0.0.1 at 2012-02-11 10:16:33 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`active` = 1[0m
+  [1m[35mPartner Load (0.4ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.4ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered projects/index.html.haml within layouts/application (19.4ms)
+Completed 200 OK in 26ms (Views: 22.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-11 10:16:35 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by PagesController#index as HTML
+  [1m[35mInstitutional Load (0.3ms)[0m  SELECT `institutionals`.* FROM `institutionals` LIMIT 1
+  [1m[36mPartner Load (0.2ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mAlbumPicture Load (0.2ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'AlbumPicture'
+  [1m[36mEventPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'EventPicture'[0m
+  [1m[35mPartner Load (0.6ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered pages/index.html.haml within layouts/application (64.4ms)
+Completed 200 OK in 72ms (Views: 66.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/projetos" for 127.0.0.1 at 2012-02-11 10:16:38 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`active` = 1[0m
+  [1m[35mPartner Load (0.2ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.5ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.6ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.6ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered projects/index.html.haml within layouts/application (19.9ms)
+Completed 200 OK in 26ms (Views: 22.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/eventos" for 127.0.0.1 at 2012-02-11 10:16:40 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by EventsController#index as HTML
+  [1m[35mEvent Load (0.3ms)[0m  SELECT `events`.* FROM `events` WHERE `events`.`active` = 1
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mPartner Load (0.6ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.6ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.4ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered events/index.html.haml within layouts/application (20.0ms)
+Completed 200 OK in 26ms (Views: 21.8ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/projetos" for 127.0.0.1 at 2012-02-11 10:16:47 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`active` = 1[0m
+  [1m[35mPartner Load (0.2ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.6ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.6ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.6ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered projects/index.html.haml within layouts/application (19.7ms)
+Completed 200 OK in 25ms (Views: 21.4ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/principios" for 127.0.0.1 at 2012-02-11 10:16:49 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by InstitutionalsController#principles as HTML
+  [1m[35mInstitutional Load (0.4ms)[0m  SELECT `institutionals`.* FROM `institutionals` LIMIT 1
+  [1m[36mPartner Load (0.3ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.4ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered institutionals/principles.html.haml within layouts/application (57.8ms)
+Completed 200 OK in 63ms (Views: 60.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/contato" for 127.0.0.1 at 2012-02-11 10:16:50 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ContactsController#new as HTML
+  [1m[35mPartner Load (0.4ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.6ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.6ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered contacts/new.html.haml within layouts/application (35.8ms)
+Completed 200 OK in 41ms (Views: 37.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-11 10:16:56 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by PagesController#index as HTML
+  [1m[35mInstitutional Load (0.3ms)[0m  SELECT `institutionals`.* FROM `institutionals` LIMIT 1
+  [1m[36mPartner Load (0.2ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mAlbumPicture Load (0.2ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'AlbumPicture'
+  [1m[36mEventPicture Load (0.2ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'EventPicture'[0m
+  [1m[35mPartner Load (0.3ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.3ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered pages/index.html.haml within layouts/application (17.5ms)
+Completed 200 OK in 25ms (Views: 20.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/quem-somos" for 127.0.0.1 at 2012-02-11 10:18:46 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by InstitutionalsController#index as HTML
+  [1m[36mInstitutional Load (0.5ms)[0m  [1mSELECT `institutionals`.* FROM `institutionals` LIMIT 1[0m
+  [1m[35mPartner Load (0.5ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.7ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.6ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.4ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered institutionals/index.html.haml within layouts/application (17.6ms)
+Completed 200 OK in 24ms (Views: 19.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/projetos" for 127.0.0.1 at 2012-02-11 10:18:47 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.4ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`active` = 1
+  [1m[36mPartner Load (0.4ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mPartner Load (0.3ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.3ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.5ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered projects/index.html.haml within layouts/application (19.8ms)
+Completed 200 OK in 27ms (Views: 23.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/eventos" for 127.0.0.1 at 2012-02-11 10:18:49 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by EventsController#index as HTML
+  [1m[36mEvent Load (0.3ms)[0m  [1mSELECT `events`.* FROM `events` WHERE `events`.`active` = 1[0m
+  [1m[35mPartner Load (0.4ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()
+  [1m[36mPartner Load (0.5ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1[0m
+  [1m[35mPartnerPicture Load (0.6ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+  [1m[36mPartnerPicture Load (0.7ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+Rendered events/index.html.haml within layouts/application (20.2ms)
+Completed 200 OK in 27ms (Views: 22.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-11 10:18:50 -0200
+[Barista] Compiling all scripts for barista
+[Barista] Compiling all coffeescripts
+[Barista] Copying all javascripts
+  Processing by PagesController#index as HTML
+  [1m[35mInstitutional Load (0.2ms)[0m  SELECT `institutionals`.* FROM `institutionals` LIMIT 1
+  [1m[36mPartner Load (0.2ms)[0m  [1mSELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1 ORDER BY RAND()[0m
+  [1m[35mAlbumPicture Load (0.2ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'AlbumPicture'
+  [1m[36mEventPicture Load (0.2ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'EventPicture'[0m
+  [1m[35mPartner Load (0.7ms)[0m  SELECT `partners`.* FROM `partners` WHERE `partners`.`active` = 1
+  [1m[36mPartnerPicture Load (0.6ms)[0m  [1mSELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 1 AND `attachments`.attachable_type = 'Partner') LIMIT 1[0m
+  [1m[35mPartnerPicture Load (0.6ms)[0m  SELECT `attachments`.* FROM `attachments` WHERE `attachments`.`type` = 'PartnerPicture' AND (`attachments`.attachable_id = 2 AND `attachments`.attachable_type = 'Partner') LIMIT 1
+Rendered pages/index.html.haml within layouts/application (18.3ms)
+Completed 200 OK in 25ms (Views: 19.9ms | ActiveRecord: 2.7ms)

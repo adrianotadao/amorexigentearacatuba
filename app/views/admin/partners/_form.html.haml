@@ -1,0 +1,23 @@
+= simple_form_for([:admin, setup_partner(@partner)], :html => {:multipart => true}) do |f|
+  - if @partner.errors.any?
+    #error_explanation
+      .errors
+        = pluralize(@partner.errors.count, "erros")
+        foram encontrados:
+
+      %ul
+        - @partner.errors.full_messages.each do |msg|
+          %li= msg
+
+  .inputs
+    = f.input :active, :as => :boolean, :prompt => false
+    = f.input :name
+    = f.input :url
+    = f.simple_fields_for :logo do |logo|
+      = logo.input :data, :as => :file
+      = image_tag(logo.object.reload.data.url(:thumb) ) if logo.object.data?
+
+  .actions
+    = f.button :submit, 'Salvar', :class => "button save"
+    - unless @partner.new_record?
+      = link_to 'Deletar', [:admin, @partner], :confirm => 'Deseja realmente deletar?', :method => :delete, :class => 'button delete'

@@ -1,0 +1,14 @@
+#album.show
+  %h1 Detalhes do usuário #{@album.name} 
+
+  %div.group
+    %p.active
+      %b Ativo:
+      = @album.status
+    %p.name
+      %b Nome:
+      = @album.name
+
+  .actions
+    = link_to 'Editar', [:edit, :admin, @album], :class => 'button edit'
+    = link_to 'Voltar', [:admin, :brands], :class => 'button back'

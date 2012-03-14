@@ -1,0 +1,26 @@
+#events
+  %h1 Eventos
+  = link_to 'Adicionar novo evento', new_admin_event_path, :class => "button_add"
+
+  -unless @events.blank?
+    %table.list
+      %thead
+        %tr
+          %th Nome
+          %th Status
+          %th.actions
+      %tbody
+        - for event in @events
+          %tr
+            %td= event.name
+            %td= event.status
+            %td.actions
+              = link_to 'Editar', [:edit, :admin, event], :class => "button_edit"
+
+  - else
+    .empty_list 
+      Não existem categoria de eventos cadastradas no momento.
+
+- content_for :javascript do
+  :javascript
+    new DataTables()

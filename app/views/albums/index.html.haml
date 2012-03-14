@@ -1,0 +1,4 @@
+#albums
+  - for album in @albums
+    .album
+      =link_to image_tag(album.pictures.first.data.url(:medium)), album_path(album)

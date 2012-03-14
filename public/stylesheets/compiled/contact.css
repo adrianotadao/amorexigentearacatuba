@@ -1,0 +1,24 @@
+/* line 2, ../../../app/assets/stylesheets/contact.sass */
+#contact #form_contact {
+  width: 650px;
+  margin: 0 auto;
+}
+/* line 8, ../../../app/assets/stylesheets/contact.sass */
+#contact #form_contact .simple_form.contact .inputs label {
+  width: 98px;
+  float: left;
+  text-align: right;
+  margin-right: 10px;
+}
+/* line 13, ../../../app/assets/stylesheets/contact.sass */
+#contact #form_contact .simple_form.contact .inputs .input {
+  margin-bottom: 5px;
+}
+/* line 15, ../../../app/assets/stylesheets/contact.sass */
+#contact #form_contact .simple_form.contact .inputs .input input, #contact #form_contact .simple_form.contact .inputs .input textarea {
+  width: 510px;
+}
+/* line 17, ../../../app/assets/stylesheets/contact.sass */
+#contact #form_contact .simple_form.contact .actions {
+  text-align: right;
+}

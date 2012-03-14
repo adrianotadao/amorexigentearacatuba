@@ -1,0 +1,11 @@
+#album
+  %h1= @album.name
+  
+  .pictures
+    - for picture in @album.pictures
+      .picture
+        =link_to image_tag(picture.data.url(:medium)), picture.data.url(:big), :class => "fancybox", :rel => @album.id
+
+-content_for :javascript do
+  :javascript
+    $("a.fancybox").fancybox()

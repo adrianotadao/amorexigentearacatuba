@@ -1,0 +1,27 @@
+/* line 2, ../../../app/assets/stylesheets/project.sass */
+#projects a {
+  text-decoration: none;
+  color: white;
+}
+/* line 5, ../../../app/assets/stylesheets/project.sass */
+#projects .project {
+  border: 1px solid #8b8b8b;
+  padding: 10px;
+  margin: 10px;
+}
+/* line 10, ../../../app/assets/stylesheets/project.sass */
+#projects .project:hover {
+  border: 1px solid white;
+}
+/* line 13, ../../../app/assets/stylesheets/project.sass */
+#projects .project .name {
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 15px;
+}
+
+/* line 20, ../../../app/assets/stylesheets/project.sass */
+#project h1 {
+  padding-bottom: 5px;
+}

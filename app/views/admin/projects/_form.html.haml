@@ -1,0 +1,23 @@
+= simple_form_for([:admin, @project]) do |f|
+  - if @project.errors.any?
+    #error_explanation
+      .errors
+        = pluralize(@project.errors.count, "erros")
+        foram encontrados:
+
+      %ul
+        - @project.errors.full_messages.each do |msg|
+          %li= msg
+
+  .inputs
+    = f.input :active, :as => :boolean, :prompt => false
+    = f.input :name
+    = f.input :body, :input_html => { :class => "ckeditor" }
+
+  .actions
+    = f.button :submit, 'Salvar', :class => "button save"
+    - unless @project.new_record?
+      = link_to 'Deletar', [:admin, @project], :confirm => 'Deseja realmente deletar?', :method => :delete, :class => 'button_delete'
+
+- content_for :javascript do
+  = javascript_include_tag 'ckeditor/ckeditor'

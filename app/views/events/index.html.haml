@@ -1,0 +1,7 @@
+#events
+  %h1 Eventos
+  - for event in @events
+    = link_to event_path(event) do
+      .event
+        .name=event.name
+        .description= truncate(event.body, :length => 300)

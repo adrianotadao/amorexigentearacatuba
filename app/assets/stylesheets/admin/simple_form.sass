@@ -1,0 +1,26 @@
+@import "compass"
+
+.simple_form
+  font-family: 'Quattrocento Sans', sans-serif
+  
+  .inputs
+    .input
+      margin-top: 10px
+      input, textarea
+        padding: 3px
+        width: 85%
+      label
+        float: left
+        width: 100px
+        text-align: right
+        margin-right: 10px
+        
+        abbr
+          color: red
+      &.string, &.text
+        input, textarea
+          border: 1px solid #ccc
+          @include border-radius(5px)
+
+  .actions
+    text-align: right

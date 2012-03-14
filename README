@@ -1,0 +1,9 @@
+== Popular o banco com dados para teste
+
+#drop, create, migrate, seed
+rake db:populate
+
+== Usuário teste
+
+email: unip@unip.com.br
+senha: 102030
